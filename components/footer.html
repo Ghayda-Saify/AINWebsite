@@ -1,0 +1,45 @@
+<footer class="site-footer">
+  <link rel="stylesheet" href="../assets/css/footer.css">
+  <div class="container">
+    <div class="footer-brand">
+      <a href="/" class="logo" aria-label="Arab Innovation Network home">
+        <img src="../assets/images/AINLogo-2.png" alt="AIN" />
+      </a>
+      <p>Arab Innovation Network</p>
+    </div>
+    
+    <nav class="footer-nav" aria-label="Footer">
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/activities.html">Activities</a></li>
+        <li><a href="/societies.html">Societies</a></li>
+        <li><a href="/sponsorship.html">Sponsorship</a></li>
+        <li><a href="/gallery.html">Gallery</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="footer-meta">
+      <p>
+        <span id="year"></span> © Arab Innovation Network. All rights reserved.
+      </p>
+      <p class="meta-links">
+        <a href="/privacy.html">Privacy</a>
+        <span aria-hidden="true">·</span>
+        <a href="/terms.html">Terms</a>
+      </p>
+    </div>
+  </div>
+
+  
+
+  <script>
+    (function () {
+      var y = document.getElementById('year');
+      if (y) { y.textContent = new Date().getFullYear(); }
+    })();
+  </script>
+</footer>
+
+
+
