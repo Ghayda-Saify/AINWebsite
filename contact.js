@@ -63,14 +63,17 @@ document.addEventListener('DOMContentLoaded', function() {
     function initMap() {
         // Check if map container exists
         if (!document.getElementById('map')) return;
+
+        // Set coordinates for An-Najah National University, Nablus (from the provided Google Maps link)
+        const najahCoords = [32.2211004, 35.2455457];
         
-        // Initialize the map
-        const map = L.map('map').setView([40.7128, -74.0060], 15); // Default to New York
+        // Initialize the map with higher zoom level (17.75 as in the Google Maps link)
+        const map = L.map('map').setView(najahCoords, 17);
         
         // Add tile layer (OpenStreetMap)
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-            maxZoom: 18,
+            maxZoom: 19,
         }).addTo(map);
         
         // Create a custom icon
@@ -82,18 +85,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Add marker with popup
-        const marker = L.marker([40.7128, -74.0060], {icon: customIcon}).addTo(map);
+        const marker = L.marker(najahCoords, {icon: customIcon}).addTo(map);
         marker.bindPopup(`
             <div style="text-align: center;">
                 <h3 style="margin: 0 0 10px 0; color: #2c3e50;">Arab Innovation Network</h3>
-                <p style="margin: 0; color: #7f8c8d;">Old An-Najah University Street, Nublus-Palestine</p>
-                <p style="margin: 5px 0 0 0; color: #7f8c8d; font-size: 0.9em;">Open Sun-Thu: 8:00 AM-3:30 PM</p>
+                <p style="margin: 0; color: #7f8c8d;">Old An-Najah University Street</p>
+                <p style="margin: 5px 0 0 0; color: #7f8c8d; font-size: 0.9em;">Nablus, Palestine</p>
             </div>
         `).openPopup();
         
-        // Add click event to directions button
+        // Add click event to directions button - updated with correct coordinates
         document.querySelector('.directions-btn').addEventListener('click', function() {
-            // In a real implementation, this would open directions in Google Maps or similar
             const url = `https://maps.app.goo.gl/KQuyJWgHu4W3CzTJ7`;
             window.open(url, '_blank');
         });
@@ -105,7 +107,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (entry.isIntersecting) {
                     setTimeout(() => {
                         map.invalidateSize();
-                        map.setView([40.7128, -74.0060], 16, {
+                        // Use the correct coordinates for smooth animation
+                        map.setView(najahCoords, 17, {
                             animate: true,
                             duration: 1.5
                         });
@@ -313,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ripple.style.top = `${event.clientY - button.getBoundingClientRect().top - radius}px`;
         ripple.classList.add('ripple');
         
-const existingRipple = button.querySelector('.ripple');
+        const existingRipple = button.querySelector('.ripple');
         if (existingRipple) {
             existingRipple.remove();
         }
