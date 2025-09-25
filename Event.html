@@ -3,36 +3,112 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Events</title>
+    <link rel="stylesheet" href="events.css" />
   </head>
   <body>
-    <header></header>
-    <section>
-      <input type="text" placeholder="Search by name" />
-      <button>Filter</button>
-      <button>Create</button>
-      <img src="" alt="10" />
-    </section>
-    <main>
-      <section>
-        <img src="" alt="event picture" />
-        <h2>hackathon</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis
-          tortor at accumsan feugiat. Suspendisse potenti. Nullam magna dui,
-          feugiat eget ligula id, accumsan.
-        </p>
-        <h3>DATE</h3>
-        <p>22/9/2022</p>
-        <h3>time</h3>
-        <p>8:30</p>
-        <h3>location</h3>
-        <p>my grandpa house</p>
-        <h3>50'000$</h3>
-        <button>Book now</button>
-      </section>
-    </main>
+    <script src="../js/site.js"></script>
+    <div class="page">
+      <div class="toolbar">
+        <div class="search">
+          <span class="search-icon">⌕</span>
+          <input id="searchInput" type="text" placeholder="Search events by name" />
+        </div>
+        <button class="btn btn-outline" id="filterBtn" title="Filter options">☰ Filter</button>
+        <div class="brand" aria-label="Ten brand">
+          <div class="brand-badge" title="10">10</div>
+          <div class="brand-title"></div>
+        </div>
+      </div>
 
-    <footer></footer>
+      <div class="filters" id="filtersPanel">
+        <div class="row">
+          <label class="chip"><input type="checkbox" id="filterFree" /> Free</label>
+          <label class="chip"><input type="checkbox" id="filterPaid" /> Paid</label>
+        </div>
+      </div>
+
+      <h2 class="section-title">Upcoming events</h2>
+      <main class="grid" id="upcomingGrid">
+        <article class="card" data-name="Hackathon" data-cost="paid">
+          <img class="thumb" src="https://picsum.photos/seed/hackathon/320/200" alt="Hackathon" />
+          <div class="content">
+            <h2 class="title">Hackathon</h2>
+            <p class="summary">48-hour coding marathon. Teams build, learn and ship impactful prototypes that solve real problems.</p>
+            <div class="meta">
+              <div class="meta-item"><div class="label">DATE</div><div class="value">22/09/2025</div></div>
+              <div class="meta-item"><div class="label">TIME</div><div class="value">08:30</div></div>
+              <div class="meta-item"><div class="label">LOCATION</div><div class="value">City Hub</div></div>
+              <div class="meta-item"><div class="label">COST</div><div class="value">$50</div></div>
+            </div>
+          </div>
+          <div class="cta"><button class="btn btn-book">Book now</button></div>
+        </article>
+
+        <article class="card" data-name="Design Meetup" data-cost="free">
+          <img class="thumb" src="https://picsum.photos/seed/design/320/200" alt="Design Meetup" />
+          <div class="content">
+            <h2 class="title">Design Meetup</h2>
+            <p class="summary">Monthly meetup for UI/UX talks, lightning demos, and friendly critiques to level up your craft.</p>
+            <div class="meta">
+              <div class="meta-item"><div class="label">DATE</div><div class="value">01/10/2025</div></div>
+              <div class="meta-item"><div class="label">TIME</div><div class="value">18:00</div></div>
+              <div class="meta-item"><div class="label">LOCATION</div><div class="value">Campus A</div></div>
+              <div class="meta-item"><div class="label">COST</div><div class="value">Free</div></div>
+            </div>
+          </div>
+          <div class="cta"><button class="btn btn-book">Book now</button></div>
+        </article>
+
+        <article class="card" data-name="AI Workshop" data-cost="paid">
+          <img class="thumb" src="https://picsum.photos/seed/ai/320/200" alt="AI Workshop" />
+          <div class="content">
+            <h2 class="title">AI Workshop</h2>
+            <p class="summary">Hands-on introduction to practical machine learning workflows with notebooks and real datasets.</p>
+            <div class="meta">
+              <div class="meta-item"><div class="label">DATE</div><div class="value">15/10/2025</div></div>
+              <div class="meta-item"><div class="label">TIME</div><div class="value">10:00</div></div>
+              <div class="meta-item"><div class="label">LOCATION</div><div class="value">Lab 3</div></div>
+              <div class="meta-item"><div class="label">COST</div><div class="value">$25</div></div>
+            </div>
+          </div>
+          <div class="cta"><button class="btn btn-book">Book now</button></div>
+        </article>
+      </main>
+
+      <h2 class="section-title">Past events</h2>
+      <section class="grid" id="pastGrid">
+        <article class="card" data-name="Spring Conference" data-cost="paid">
+          <img class="thumb" src="https://picsum.photos/seed/spring/320/200" alt="Spring Conference" />
+          <div class="content">
+            <h2 class="title">Spring Conference</h2>
+            <p class="summary">A two-day event featuring talks on web development and cloud-native tooling.</p>
+            <div class="meta">
+              <div class="meta-item"><div class="label">DATE</div><div class="value">20/04/2025</div></div>
+              <div class="meta-item"><div class="label">TIME</div><div class="value">09:00</div></div>
+              <div class="meta-item"><div class="label">LOCATION</div><div class="value">Main Hall</div></div>
+              <div class="meta-item"><div class="label">COST</div><div class="value">$40</div></div>
+            </div>
+          </div>
+          <div class="cta"><button class="btn btn-book">Book now</button></div>
+        </article>
+
+        <article class="card" data-name="Community Day" data-cost="free">
+          <img class="thumb" src="https://picsum.photos/seed/community/320/200" alt="Community Day" />
+          <div class="content">
+            <h2 class="title">Community Day</h2>
+            <p class="summary">Workshops and networking sessions organized by the local developer community.</p>
+            <div class="meta">
+              <div class="meta-item"><div class="label">DATE</div><div class="value">10/06/2025</div></div>
+              <div class="meta-item"><div class="label">TIME</div><div class="value">11:00</div></div>
+              <div class="meta-item"><div class="label">LOCATION</div><div class="value">Open Space</div></div>
+              <div class="meta-item"><div class="label">COST</div><div class="value">Free</div></div>
+            </div>
+          </div>
+          <div class="cta"><button class="btn btn-book">Book now</button></div>
+        </article>
+      </section>
+    </div>
+    <script src="events.js"></script>
   </body>
 </html>
