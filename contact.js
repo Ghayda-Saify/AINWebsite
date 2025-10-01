@@ -1,82 +1,363 @@
-// contact.js
-document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contactForm');
-    const successMessage = document.getElementById('successMessage');
-    
-    // Initialize subtle background animation
-    initBackgroundAnimation();
-    
-    // Initialize the map
-    initMap();
-    
-    // Form validation and submission
-    contactForm.addEventListener('submit', function(e) {
+// contact.js - Professional Email Verification System
+
+class ContactForm {
+    constructor() {
+        this.contactForm = document.getElementById('contactForm');
+        this.successMessage = document.getElementById('successMessage');
+        this.submitBtn = document.getElementById('submitBtn');
+        this.emailVerificationModal = document.getElementById('emailVerificationModal');
+        this.errorModal = document.getElementById('errorModal');
+        
+        // Allowed email domains
+        this.allowedDomains = [
+            'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com',
+            'aol.com', 'icloud.com', 'protonmail.com', 'live.com',
+            'arabinnovation.net', 'najah.edu'
+        ];
+        
+        // Blocked temporary email domains
+        this.blockedDomains = [
+            'tempmail.com', '10minutemail.com', 'guerrillamail.com',
+            'mailinator.com', 'throwawaymail.com', 'fakeinbox.com'
+        ];
+        
+        this.currentEmail = '';
+        this.init();
+    }
+
+    init() {
+        this.initBackgroundAnimation();
+        this.initMap();
+        this.setupEventListeners();
+        this.setupEmailHint();
+    }
+
+    setupEventListeners() {
+        this.contactForm.addEventListener('submit', (e) => this.handleSubmit(e));
+        
+        document.getElementById('retryVerification').addEventListener('click', () => {
+            this.hideErrorModal();
+            const currentEmail = document.getElementById('email').value.trim();
+            this.verifyEmail(currentEmail);
+        });
+        
+        document.getElementById('editEmail').addEventListener('click', () => {
+            this.hideErrorModal();
+            document.getElementById('email').focus();
+        });
+        
+        const emailInput = document.getElementById('email');
+        emailInput.addEventListener('input', () => {
+            this.clearError('emailError');
+            this.updateEmailHint();
+        });
+        
+        this.setupInputAnimations();
+    }
+
+    setupEmailHint() {
+        const emailInput = document.getElementById('email');
+        emailInput.addEventListener('focus', () => {
+            emailInput.parentElement.querySelector('.email-hint').style.opacity = '0';
+        });
+        
+        emailInput.addEventListener('blur', () => {
+            if (!emailInput.value) {
+                emailInput.parentElement.querySelector('.email-hint').style.opacity = '1';
+            }
+        });
+    }
+
+    updateEmailHint() {
+        const emailInput = document.getElementById('email');
+        const hint = emailInput.parentElement.querySelector('.email-hint');
+        hint.style.opacity = emailInput.value ? '0' : '1';
+    }
+
+    async handleSubmit(e) {
         e.preventDefault();
+        this.clearErrors();
         
-        // Reset error messages
-        clearErrors();
+        if (!this.validateForm()) return;
+
+        const email = document.getElementById('email').value.trim();
+        this.currentEmail = email;
+        await this.verifyEmail(email);
+    }
+
+    async verifyEmail(email) {
+        this.showVerificationModal();
         
-        // Validate form
-        if (validateForm()) {
-            // Simulate form submission
-            simulateSubmission();
-        }
-    });
-    
-    // Real-time validation
-    document.getElementById('name').addEventListener('blur', validateName);
-    document.getElementById('email').addEventListener('blur', validateEmail);
-    document.getElementById('message').addEventListener('blur', validateMessage);
-    
-    // Input animations
-    const inputs = document.querySelectorAll('input, textarea');
-    inputs.forEach(input => {
-        input.addEventListener('focus', function() {
-            this.parentElement.classList.add('focused');
-            animateInputIcon(this);
-        });
-        
-        input.addEventListener('blur', function() {
-            if (this.value === '') {
-                this.parentElement.classList.remove('focused');
+        try {
+            // Step 1: Check email format
+            await this.simulateVerificationStep(0, 1000);
+            if (!this.isValidEmailFormat(email)) {
+                throw { 
+                    type: 'format', 
+                    message: `The email address format for "${email}" is invalid.` 
+                };
             }
-            resetInputIcon(this);
-        });
-        
-        // Check if input has value on page load (for browser autofill)
-        if (input.value !== '') {
-            input.parentElement.classList.add('focused');
+
+            // Step 2: Check if domain is allowed
+            await this.simulateVerificationStep(1, 1500);
+            if (!this.isDomainAllowed(email)) {
+                throw { 
+                    type: 'domain', 
+                    message: `The email domain for "${email}" is not currently accepted.` 
+                };
+            }
+
+            // Step 3: Check if domain is blocked
+            await this.simulateVerificationStep(2, 1500);
+            if (this.isDomainBlocked(email)) {
+                throw { 
+                    type: 'temporary', 
+                    message: `Temporary email addresses like "${email}" are not accepted for security reasons.` 
+                };
+            }
+
+            this.hideVerificationModal();
+            this.sendEmail();
+
+        } catch (error) {
+            this.hideVerificationModal();
+            this.showErrorModal(error.type, error.message, email);
         }
+    }
+
+    simulateVerificationStep(stepIndex, duration) {
+        return new Promise((resolve) => {
+            this.updateProgressBar((stepIndex + 1) * 33.33);
+            this.updateVerificationSteps(stepIndex);
+            setTimeout(resolve, duration);
+        });
+    }
+
+    updateProgressBar(percentage) {
+        const progressFill = document.querySelector('.progress-fill');
+        progressFill.style.width = `${percentage}%`;
+    }
+
+    updateVerificationSteps(currentStep) {
+        const steps = document.querySelectorAll('.step');
+        const details = document.querySelectorAll('.detail-item');
         
-        // Add subtle input animation on keypress
-        input.addEventListener('input', function() {
-            if (this.value.length > 0) {
-                this.style.boxShadow = '0 0 5px rgba(52, 152, 219, 0.2)';
-                setTimeout(() => {
-                    this.style.boxShadow = '';
-                }, 300);
+        steps.forEach((step, index) => {
+            step.classList.toggle('active', index <= currentStep);
+        });
+
+        details.forEach((detail, index) => {
+            const icon = detail.querySelector('i');
+            if (index <= currentStep) {
+                if (index < currentStep) {
+                    icon.className = 'fas fa-check-circle valid';
+                    detail.classList.add('valid');
+                } else {
+                    icon.className = 'fas fa-spinner fa-spin checking';
+                    detail.classList.add('checking');
+                }
+            } else {
+                icon.className = 'fas fa-clock waiting';
+                detail.classList.remove('valid', 'checking');
             }
         });
-    });
+    }
+
+    isValidEmailFormat(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    isDomainAllowed(email) {
+        const domain = email.split('@')[1]?.toLowerCase();
+        return this.allowedDomains.includes(domain);
+    }
+
+    isDomainBlocked(email) {
+        const domain = email.split('@')[1]?.toLowerCase();
+        return this.blockedDomains.includes(domain);
+    }
+
+    showVerificationModal() {
+        document.body.classList.add('modal-active');
+        this.emailVerificationModal.classList.add('active');
+        this.updateProgressBar(0);
+        this.updateVerificationSteps(-1);
+    }
+
+    hideVerificationModal() {
+        document.body.classList.remove('modal-active');
+        this.emailVerificationModal.classList.remove('active');
+    }
+
+    showErrorModal(errorType, errorMessage, email) {
+    document.body.classList.add('modal-active');
+    this.errorModal.classList.add('active');
     
-    // Function to initialize the map
-    function initMap() {
-        // Check if map container exists
+    // Update email display
+    document.getElementById('enteredEmail').textContent = email;
+    
+    // Update error message text
+    document.getElementById('errorMessageText').textContent = errorMessage;
+    
+    // Control domains list visibility
+    const allowedDomainsSection = document.getElementById('allowedDomainsSection');
+    allowedDomainsSection.style.display = errorType === 'format' ? 'none' : 'block';
+    
+    // Add mobile-specific class for scrollable domains
+    if (window.innerWidth <= 768 && errorType !== 'format') {
+        allowedDomainsSection.classList.add('mobile-domains-scroll');
+    } else {
+        allowedDomainsSection.classList.remove('mobile-domains-scroll');
+    }
+}
+
+    hideErrorModal() {
+        document.body.classList.remove('modal-active');
+        this.errorModal.classList.remove('active');
+        
+        // Reset to default message for next use
+        document.getElementById('errorMessageText').innerHTML = 
+            'The email address <strong id="enteredEmail"></strong> could not be verified.';
+    }
+
+    validateForm() {
+        let isValid = true;
+        
+        const name = document.getElementById('name').value.trim();
+        if (name.length < 2) {
+            this.showError('nameError', 'Please enter your full name (minimum 2 characters)');
+            isValid = false;
+        }
+        
+        const email = document.getElementById('email').value.trim();
+        if (!email) {
+            this.showError('emailError', 'Email address is required');
+            isValid = false;
+        }
+        
+        const subject = document.getElementById('subject').value.trim();
+        if (subject.length < 3) {
+            this.showError('subjectError', 'Please provide a meaningful subject (minimum 3 characters)');
+            isValid = false;
+        }
+        
+        const message = document.getElementById('message').value.trim();
+        if (message.length < 10) {
+            this.showError('messageError', 'Please provide a detailed message (minimum 10 characters)');
+            isValid = false;
+        }
+        
+        return isValid;
+    }
+
+    sendEmail() {
+        const submitBtn = this.submitBtn;
+        const originalText = submitBtn.innerHTML;
+        
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending Message...';
+        submitBtn.disabled = true;
+
+        const params = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            subject: document.getElementById("subject").value,
+            message: document.getElementById("message").value,
+        };
+
+        emailjs.send("service_1y554gi", "template_rksas38", params)
+            .then(() => this.showSuccess())
+            .catch((error) => {
+                console.error('Email sending failed:', error);
+                this.showError('', 'Failed to send message. Please try again in a moment.');
+            })
+            .finally(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            });
+    }
+
+    showSuccess() {
+        this.contactForm.style.display = 'none';
+        this.successMessage.style.display = 'block';
+        
+        setTimeout(() => {
+            this.contactForm.reset();
+            this.contactForm.style.display = 'block';
+            this.successMessage.style.display = 'none';
+            this.resetInputStyles();
+            this.updateEmailHint();
+        }, 5000);
+    }
+
+    showError(elementId, message) {
+        if (!elementId) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message global-error';
+            errorDiv.textContent = message;
+            errorDiv.style.cssText = `
+                background: #e74c3c;
+                color: white;
+                padding: 15px;
+                border-radius: 8px;
+                margin: 15px 0;
+                text-align: center;
+                animation: slideDown 0.3s ease;
+            `;
+            
+            this.contactForm.parentNode.insertBefore(errorDiv, this.contactForm);
+            setTimeout(() => errorDiv.remove(), 5000);
+        } else {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+    }
+
+    clearError(elementId) {
+        const errorElement = document.getElementById(elementId);
+        errorElement.textContent = '';
+        errorElement.style.display = 'none';
+    }
+
+    clearErrors() {
+        document.querySelectorAll('.error-message').forEach(element => {
+            element.textContent = '';
+            element.style.display = 'none';
+        });
+    }
+
+    setupInputAnimations() {
+        document.querySelectorAll('input, textarea').forEach(input => {
+            if (input.value) input.parentElement.classList.add('focused');
+            
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('focused');
+            });
+            
+            input.addEventListener('blur', function() {
+                if (!this.value) this.parentElement.classList.remove('focused');
+            });
+        });
+    }
+
+    resetInputStyles() {
+        document.querySelectorAll('.input-with-icon').forEach(input => {
+            input.classList.remove('focused');
+        });
+    }
+
+    initMap() {
         if (!document.getElementById('map')) return;
 
-        // Set coordinates for An-Najah National University, Nablus (from the provided Google Maps link)
         const najahCoords = [32.2211004, 35.2455457];
-        
-        // Initialize the map with higher zoom level (17.75 as in the Google Maps link)
         const map = L.map('map').setView(najahCoords, 17);
         
-        // Add tile layer (OpenStreetMap)
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            attribution: '&copy; OpenStreetMap contributors',
             maxZoom: 19,
         }).addTo(map);
         
-        // Create a custom icon
         const customIcon = L.divIcon({
             className: 'custom-marker',
             html: '<i class="fas fa-map-marker-alt"></i>',
@@ -84,382 +365,32 @@ document.addEventListener('DOMContentLoaded', function() {
             iconAnchor: [20, 40]
         });
         
-        // Add marker with popup
         const marker = L.marker(najahCoords, {icon: customIcon}).addTo(map);
         marker.bindPopup(`
             <div style="text-align: center;">
                 <h3 style="margin: 0 0 10px 0; color: #2c3e50;">Arab Innovation Network</h3>
                 <p style="margin: 0; color: #7f8c8d;">Old An-Najah University Street</p>
-                <p style="margin: 5px 0 0 0; color: #7f8c8d; font-size: 0.9em;">Nablus, Palestine</p>
+                <p style="margin: 5px 0 0 0; color: #7f8c8d;">Nablus, Palestine</p>
             </div>
         `).openPopup();
         
-        // Add click event to directions button - updated with correct coordinates
-        document.querySelector('.directions-btn').addEventListener('click', function() {
-            const url = `https://maps.app.goo.gl/KQuyJWgHu4W3CzTJ7`;
-            window.open(url, '_blank');
+        document.querySelector('.directions-btn').addEventListener('click', () => {
+            window.open('https://maps.app.goo.gl/KQuyJWgHu4W3CzTJ7', '_blank');
         });
-        
-        // Add smooth zoom animation when map is in view
-        const mapSection = document.querySelector('.map-section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        map.invalidateSize();
-                        // Use the correct coordinates for smooth animation
-                        map.setView(najahCoords, 17, {
-                            animate: true,
-                            duration: 1.5
-                        });
-                    }, 300);
-                }
-            });
-        }, { threshold: 0.5 });
-        
-        observer.observe(mapSection);
     }
-    
-    // Function to initialize background animation
-    function initBackgroundAnimation() {
-        const shapes = document.querySelectorAll('.bg-shape');
-        shapes.forEach(shape => {
-            // Randomize initial position and animation
+
+    initBackgroundAnimation() {
+        document.querySelectorAll('.bg-shape').forEach(shape => {
             const randomX = Math.random() * 20;
             const randomY = Math.random() * 20;
             shape.style.left = `${randomX}%`;
             shape.style.top = `${randomY}%`;
-            
-            // Randomize animation duration
-            const duration = Math.random() * 10 + 15;
-            shape.style.animationDuration = `${duration}s`;
+            shape.style.animationDuration = `${Math.random() * 10 + 15}s`;
         });
     }
-    
-    // Function to animate input icon
-    function animateInputIcon(input) {
-        const icon = input.previousElementSibling;
-        if (icon && icon.tagName === 'I') {
-            icon.style.transform = 'translateY(-50%) scale(1.1)';
-            icon.style.color = '#3498db';
-        }
-    }
-    
-    // Function to reset input icon
-    function resetInputIcon(input) {
-        const icon = input.previousElementSibling;
-        if (icon && icon.tagName === 'I') {
-            icon.style.transform = 'translateY(-50%) scale(1)';
-            icon.style.color = '#7f8c8d';
-        }
-    }
-    
-    // Function to validate the entire form
-    function validateForm() {
-        let isValid = true;
-        
-        if (!validateName()) isValid = false;
-        if (!validateEmail()) isValid = false;
-        if (!validateMessage()) isValid = false;
-        
-        return isValid;
-    }
-    
-    // Function to validate name
-    function validateName() {
-        const nameInput = document.getElementById('name');
-        const nameError = document.getElementById('nameError');
-        const nameValue = nameInput.value.trim();
-        
-        if (nameValue === '') {
-            showError(nameError, 'Name is required');
-            shakeElement(nameInput);
-            return false;
-        } else if (nameValue.length < 2) {
-            showError(nameError, 'Name must be at least 2 characters long');
-            shakeElement(nameInput);
-            return false;
-        } else {
-            clearError(nameError);
-            highlightElement(nameInput);
-            return true;
-        }
-    }
-    
-    // Function to validate email
-    function validateEmail() {
-        const emailInput = document.getElementById('email');
-        const emailError = document.getElementById('emailError');
-        const emailValue = emailInput.value.trim();
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        
-        if (emailValue === '') {
-            showError(emailError, 'Email is required');
-            shakeElement(emailInput);
-            return false;
-        } else if (!emailRegex.test(emailValue)) {
-            showError(emailError, 'Please enter a valid email address');
-            shakeElement(emailInput);
-            return false;
-        } else {
-            clearError(emailError);
-            highlightElement(emailInput);
-            return true;
-        }
-    }
-    
-    // Function to validate message
-    function validateMessage() {
-        const messageInput = document.getElementById('message');
-        const messageError = document.getElementById('messageError');
-        const messageValue = messageInput.value.trim();
-        
-        if (messageValue === '') {
-            showError(messageError, 'Message is required');
-            shakeElement(messageInput);
-            return false;
-        } else if (messageValue.length < 10) {
-            showError(messageError, 'Message must be at least 10 characters long');
-            shakeElement(messageInput);
-            return false;
-        } else {
-            clearError(messageError);
-            highlightElement(messageInput);
-            return true;
-        }
-    }
-    
-    // Function to show error message
-    function showError(errorElement, message) {
-        errorElement.textContent = message;
-        errorElement.style.display = 'block';
-        errorElement.style.animation = 'fadeIn 0.3s ease forwards';
-    }
-    
-    // Function to clear error message
-    function clearError(errorElement) {
-        errorElement.textContent = '';
-        errorElement.style.display = 'none';
-    }
-    
-    // Function to clear all errors
-    function clearErrors() {
-        const errorElements = document.querySelectorAll('.error-message');
-        errorElements.forEach(error => {
-            clearError(error);
-        });
-    }
-    
-    // Function to shake element on error
-    function shakeElement(element) {
-        element.style.animation = 'shake 0.5s ease';
-        setTimeout(() => {
-            element.style.animation = '';
-        }, 500);
-    }
-    
-    // Function to highlight element on success
-    function highlightElement(element) {
-        element.style.boxShadow = '0 0 5px rgba(46, 204, 113, 0.3)';
-        setTimeout(() => {
-            element.style.boxShadow = '';
-        }, 1000);
-    }
-    
-    // Function to simulate form submission
-    function simulateSubmission() {
-        const submitBtn = contactForm.querySelector('.submit-btn');
-        const originalText = submitBtn.querySelector('span').textContent;
-        
-        // Show loading state with animation
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-        submitBtn.disabled = true;
-        
-        // Add ripple effect to button
-        createRippleEffect(submitBtn);
-        
-        // Simulate API call
-        setTimeout(() => {
-            // Hide form and show success message
-            contactForm.style.display = 'none';
-            successMessage.style.display = 'block';
-            
-            // Add subtle success effect
-            createSuccessEffect();
-            
-            // Reset button after 5 seconds (for demo purposes)
-            setTimeout(() => {
-                submitBtn.innerHTML = `<span>${originalText}</span><i class="fas fa-paper-plane"></i>`;
-                submitBtn.disabled = false;
-                
-                // Reset form
-                contactForm.reset();
-                contactForm.style.display = 'block';
-                successMessage.style.display = 'none';
-                
-                // Remove focused class from inputs
-                inputs.forEach(input => {
-                    input.parentElement.classList.remove('focused');
-                });
-            }, 5000);
-        }, 2000);
-    }
-    
-    // Function to create ripple effect on button click
-    function createRippleEffect(button) {
-        const ripple = document.createElement('span');
-        const diameter = Math.max(button.clientWidth, button.clientHeight);
-        const radius = diameter / 2;
-        
-        ripple.style.width = ripple.style.height = `${diameter}px`;
-        ripple.style.left = `${event.clientX - button.getBoundingClientRect().left - radius}px`;
-        ripple.style.top = `${event.clientY - button.getBoundingClientRect().top - radius}px`;
-        ripple.classList.add('ripple');
-        
-        const existingRipple = button.querySelector('.ripple');
-        if (existingRipple) {
-            existingRipple.remove();
-        }
-        
-        button.appendChild(ripple);
-        
-        setTimeout(() => {
-            ripple.remove();
-        }, 600);
-    }
-    
-    // Function to create subtle success effect
-    function createSuccessEffect() {
-        const successContainer = document.querySelector('.success-message');
-        successContainer.style.animation = 'successPop 0.5s ease forwards';
-        
-        // Add a subtle pulse animation
-        setTimeout(() => {
-            successContainer.style.animation = 'pulse 1s ease';
-            setTimeout(() => {
-                successContainer.style.animation = '';
-            }, 1000);
-        }, 500);
-    }
-    
-    // Add CSS for animations
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-3px); }
-            75% { transform: translateX(3px); }
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
-        }
-        
-        .ripple {
-            position: absolute;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.4);
-            transform: scale(0);
-            animation: ripple-animation 0.6s linear;
-        }
-        
-        @keyframes ripple-animation {
-            to {
-                transform: scale(4);
-                opacity: 0;
-            }
-        }
-    `;
-    document.head.appendChild(style);
-    
-    // Add floating animation to social links on hover
-    const socialLinks = document.querySelectorAll('.social-link');
-    socialLinks.forEach(link => {
-        link.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-3px)';
-        });
-        
-        link.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-        });
-    });
-    
-    // Add subtle parallax effect to background on mouse move
-    document.addEventListener('mousemove', function(e) {
-        const x = e.clientX / window.innerWidth;
-        const y = e.clientY / window.innerHeight;
-        
-        const shapes = document.querySelector('.background-elements');
-        shapes.style.transform = `translate(${x * 5}px, ${y * 5}px)`;
-    });
-    
-    // Add scroll animation for elements
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.animationPlayState = 'running';
-                // Add specific animation for map section
-                if (entry.target.classList.contains('map-section')) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            }
-        });
-    }, observerOptions);
-    
-    // Observe elements for scroll animations
-    const animatedElements = document.querySelectorAll('.info-card, .contact-form, .map-section');
-    animatedElements.forEach(el => {
-        // Set initial state for map section
-        if (el.classList.contains('map-section')) {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-        }
-        observer.observe(el);
-    });
-    
-    // Map interaction enhancements
-    function enhanceMapInteractions() {
-        const directionsBtn = document.querySelector('.directions-btn');
-        const mapContainer = document.querySelector('.map-container');
-        
-        if (directionsBtn) {
-            directionsBtn.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-2px) scale(1.02)';
-            });
-            
-            directionsBtn.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        }
-        
-        if (mapContainer) {
-            // Add hover effect to map container
-            mapContainer.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-5px)';
-                this.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.15)';
-            });
-            
-            mapContainer.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-                this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.08)';
-            });
-        }
-    }
-    
-    // Initialize map interactions
-    enhanceMapInteractions();
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new ContactForm();
 });
