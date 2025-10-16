@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events</title>
+    <link rel="stylesheet" href="events.css" />
+  </head>
+  <body>
+    <!-- NEW HEADER SECTION STARTS HERE -->
+    <header class="events-hero-section">
+      <canvas id="events-header-canvas"></canvas>
+      <div class="events-hero-content">
+        <h1>Our Events</h1>
+        <p>Explore upcoming and past events from our network.</p>
+      </div>
+    </header>
+    <!-- NEW HEADER SECTION ENDS HERE -->
+
+    <!-- Original content starts here, after the new header -->
+    <div class="page">
+      <div class="toolbar">
+        <div class="search">
+          <span class="search-icon">⌕</span>
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Search events by name"
+          />
+        </div>
+        <button class="btn btn-outline" id="filterBtn" title="Filter options">
+          ☰ Filter
+        </button>
+        <div class="brand" aria-label="Level brand">
+          <div class="brand-badge" title="10" id="brandBadge">10</div>
+          <div class="brand-title"></div>
+        </div>
+      </div>
+
+      <div class="filters" id="filtersPanel">
+        <div class="row">
+          <label class="chip"
+            ><input
+              type="radio"
+              name="adminLevelFilter"
+              value="8"
+              id="filterLevel8"
+            />
+            8</label
+          >
+          <label class="chip"
+            ><input
+              type="radio"
+              name="adminLevelFilter"
+              value="9"
+              id="filterLevel9"
+            />
+            9</label
+          >
+          <label class="chip"
+            ><input
+              type="radio"
+              name="adminLevelFilter"
+              value="10"
+              id="filterLevel10"
+              checked
+            />
+            10</label
+          >
+        </div>
+      </div>
+
+      <h2 class="section-title" id="upcomingTitle">Upcoming events</h2>
+      <main class="grid" id="upcomingGrid">
+        <article
+          class="card"
+          data-name="Event Name"
+          data-admin-level="10"
+          data-full-description="Brief description of the event."
+          data-extra-detail-description="More detailed description about the event."
+          data-images="https://picsum.photos/seed/event1/600/400,https://picsum.photos/seed/event2/600/400"
+          data-event-type="upcoming"
+        >
+          <img
+            class="thumb"
+            src="https://picsum.photos/seed/event/320/200"
+            alt="Event Name"
+          />
+          <div class="content">
+            <h2 class="title">Hackathon</h2>
+            <p class="summary">هاكاثون عين الأبداعي</p>
+            <div class="meta">
+              <div class="meta-item">
+                <div class="label">DATE</div>
+                <div class="value">Soon!</div>
+              </div>
+              <div class="meta-item">
+                <div class="label">LOCATION</div>
+                <div class="value">An-Najah University</div>
+              </div>
+            </div>
+          </div>
+          <div class="cta"><button class="btn btn-book">Book now</button></div>
+        </article>
+        <article
+          class="card"
+          data-name="Event Name"
+          data-admin-level="10"
+          data-full-description="مخيم فش زيه"
+          data-extra-detail-description="More detailed description about the event."
+          data-images="https://picsum.photos/seed/event1/600/400,https://picsum.photos/seed/event2/600/400"
+          data-event-type="upcoming"
+        >
+          <img
+            class="thumb"
+            src="https://picsum.photos/seed/event/320/200"
+            alt="Event Name"
+          />
+          <div class="content">
+            <h2 class="title">مخيم عينك على ذاتك 4</h2>
+            <p class="summary">مخيم عينك على ذاتك</p>
+            <div class="meta">
+              <div class="meta-item">
+                <div class="label">DATE</div>
+                <div class="value">Soon!</div>
+              </div>
+              <div class="meta-item">
+                <div class="label">LOCATION</div>
+                <div class="value">Stay tunned!</div>
+              </div>
+            </div>
+          </div>
+          <div class="cta"><button class="btn btn-book">Book now</button></div>
+        </article>
+      </main>
+
+      <h2 class="section-title" id="pastTitle">Past events</h2>
+      <section class="grid" id="pastGrid">
+        <article
+          class="card"
+          data-name="ESCAPE 2 AIN"
+          data-admin-level="10"
+          data-full-description="🧩 Escape To AIN 2 – رحلة البحث عن الجوهرة المفقودة
+
+‏في يوم السبت 11 تشرين الأول 2025، نظّمت الشبكة العربية للابتكار – عين فعالية Escape To AIN 2 في جامعة النجاح الوطنية – الحرم الجديد، تحديدًا في كلية الهندسة والعلوم وملاعب كلية الرياضة، من الساعة 9 صباحًا حتى 5 مساءً.
+
+‏حملت الفعالية هذا العام عنوان “العثور على الجوهرة المفقودة”، وشارك فيها 100 طالب موزعين على 25 فريقًا، خاضوا تجربة مليئة بالحماس والتحدي عبر سبع غرف متتالية من الألغاز والاختبارات الذهنية.
+‏في كل غرفة، كان على الفرق حل سلسلة من الألغاز لجمع بطاقات تحمل تلميحات عن موقع الجوهرة، حتى يتمكن الفريق الذي يجمع البطاقات السبع من اكتشاف المكان النهائي للجوهرة والفوز بالسباق الكبير 🏆.
+
+‏تخلّل النشاط استراحة للغداء والصلاة في ساحة النافورة – مبنى العلوم B2، قبل استكمال المنافسة في الأجواء الممتعة.
+
+‏وشهد الافتتاح لحظة مؤثرة بإلقاء قصيدة شعرية بمناسبة انتهاء الحرب في غزة، كما تم خلال الفعالية تكريم متطوعي تحدي الثلاثين تقديرًا لعطائهم.
+‏واختُتم اليوم بتكريم الفريقين الفائزين بالمركزين الأول والثاني بمكافآت مالية، إضافةً إلى توزيع هدايا وكوبونات على جميع المشاركين، وسط أجواء من الفخر والإنجاز والروح الإيجابية."
+          data-extra-detail-description="More detailed description about the event."
+          data-images="images/ESCP1.jpg,images/ESCP2.jpg,images/ESCP3.jpg"
+          data-event-type="past"
+        >
+          <img class="thumb" src="images/ESCP1.jpg" alt="Event Name" />
+          <div class="content">
+            <h2 class="title">ESCAPE 2 AIN</h2>
+            <p class="summary">
+              🎯 Escape To AIN 2 – تجربة الإبداع والتحدّي! ‏فعالية Escape To AIN
+              2 هي النسخة الثانية من التجربة الإبداعية الفريدة التي تنظّمها
+              الشبكة العربية للابتكار – عين في جامعة النجاح الوطنية، حيث اجتمع
+              العشرات من الطلبة والعقول الطموحة لخوض مغامرة مليئة بالأفكار،
+              التحديات، وروح الفريق. ‏تم تصميم النشاط ليكون أكثر من مجرد لعبة
+              هروب، بل مساحة تحفّز التفكير الابتكاري، العمل الجماعي، واتخاذ
+              القرار تحت الضغط. من خلال محطات متنوعة واختبارات ذهنية تفاعلية،
+              عاش المشاركون تجربة تدمج بين المتعة، التعلم، والإلهام. ‏اختُتمت
+              الفعالية بأجواء حماسية وتكريم للمشاركين الذين أثبتوا أن الإبداع لا
+              حدود له، لتؤكد عين مجددًا رسالتها في تمكين الشباب، وتحويل الفكرة
+              إلى أثر ملموس في المجتمع الجامعي.
+            </p>
+            <div class="meta">
+              <div class="meta-item">
+                <div class="label">DATE</div>
+                <div class="value">11/10/2025</div>
+              </div>
+              <div class="meta-item">
+                <div class="label">LOCATION</div>
+                <div class="value">An-Najah University</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="card"
+          data-name="Event Name"
+          data-admin-level="10"
+          data-full-description="مخيم فش زيه"
+          data-extra-detail-description="More detailed description about the event."
+          data-images="images/301.jpg,images/302.jpg,images/303.jpg"
+          data-event-type="upcoming"
+        >
+          <img class="thumb" src="images/301.jpg" alt="Event Name" />
+          <div class="content">
+            <h2 class="title">تحدي الثلاثين</h2>
+            <p class="summary">مخيم عينك على ذاتك</p>
+            <div class="meta">
+              <div class="meta-item">
+                <div class="label">DATE</div>
+                <div class="value">16/8/2025</div>
+              </div>
+              <div class="meta-item">
+                <div class="label">LOCATION</div>
+                <div class="value">An-Najah University</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="card"
+          data-name="معرض عين على المستقبل"
+          data-admin-level="10"
+          data-full-description="Hands-on introduction to practical machine learning workflows with notebooks and real datasets."
+          data-extra-detail-description="This comprehensive AI Workshop will cover data preprocessing, model selection, training, and evaluation using Python and popular libraries like scikit-learn and TensorFlow. Participants are encouraged to bring their laptops for a fully interactive experience."
+          data-images="images/EXB1.jpg,images/EXB2.jpg,images/EXB3.jpg,images/EXB4.jpg,images/EXB5.jpg"
+          data-event-type="upcoming"
+        >
+          <img class="thumb" src="images/EXB1.jpg" alt="AI Workshop" />
+          <div class="content">
+            <h2 class="title">معرض عين على المستقبل</h2>
+            <p class="summary">معرض عين للتعريف عن التخصصات الجامعية</p>
+            <div class="meta">
+              <div class="meta-item">
+                <div class="label">DATE</div>
+                <div class="value">20-21/5/2025</div>
+              </div>
+              <div class="meta-item">
+                <div class="label">LOCATION</div>
+                <div class="value">An-Najah University</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="card"
+          data-name="مخيم عينك على ذاتك 3"
+          data-admin-level="9"
+          data-full-description="This is an executive summary of the Hackathon. It's a high-energy coding marathon focused on rapid prototyping and problem-solving."
+          data-extra-detail-description="This year's Hackathon will feature mentorship from industry leaders, dedicated workshops on emerging technologies, and a grand prize for the most innovative solution. Teams will present their work to a panel of judges. Networking opportunities with potential employers will also be available throughout the event."
+          data-images="images/CAMP1.jpg,images/CAMP2.jpg,images/CAMP3.jpg,images/CAMP4.jpg,images/CAMP5.jpg"
+          data-event-type="upcoming"
+        >
+          <img class="thumb" src="images/CAMP1.jpg" alt="Hackathon" />
+          <div class="content">
+            <h2 class="title">مخيم عينك على ذاتك 3</h2>
+            <p class="summary">مخيم عينك على ذاتك 3</p>
+            <div class="meta">
+              <div class="meta-item">
+                <div class="label">DATE</div>
+                <div class="value">22/09/2025</div>
+              </div>
+              <div class="meta-item">
+                <div class="label">LOCATION</div>
+                <div class="value">City Hub</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="card"
+          data-name="معرض الشبكة العربية للابتكار"
+          data-admin-level="9"
+          data-full-description="This is an executive summary of the Hackathon. It's a high-energy coding marathon focused on rapid prototyping and problem-solving."
+          data-extra-detail-description="This year's Hackathon will feature mentorship from industry leaders, dedicated workshops on emerging technologies, and a grand prize for the most innovative solution. Teams will present their work to a panel of judges. Networking opportunities with potential employers will also be available throughout the event."
+          data-images="images/EXB11.jpg,images/EXB12.jpg,images/EXB13.jpg,images/EXB14.jpg,images/EXB15.jpg"
+          data-event-type="upcoming"
+        >
+          <img class="thumb" src="images/EXB11.jpg" alt="Hackathon" />
+          <div class="content">
+            <h2 class="title">معرض الشبكة العربية للابتكار</h2>
+            <p class="summary">معرض الشبكة العربية للابتكار</p>
+            <div class="meta">
+              <div class="meta-item">
+                <div class="label">DATE</div>
+                <div class="value">22/09/2025</div>
+              </div>
+              <div class="meta-item">
+                <div class="label">LOCATION</div>
+                <div class="value">City Hub</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="card"
+          data-name="ومضة"
+          data-admin-level="9"
+          data-full-description="This is an executive summary of the Hackathon. It's a high-energy coding marathon focused on rapid prototyping and problem-solving."
+          data-extra-detail-description="This year's Hackathon will feature mentorship from industry leaders, dedicated workshops on emerging technologies, and a grand prize for the most innovative solution. Teams will present their work to a panel of judges. Networking opportunities with potential employers will also be available throughout the event."
+          data-images="images/WAMDAH1.jpg,images/WAMDAH2.jpg,images/WAMDAH3.jpg,images/WAMDAH4.jpg,images/WAMDAH5.jpg"
+          data-event-type="upcoming"
+        >
+          <img class="thumb" src="images/WAMDAH1.jpg" alt="Hackathon" />
+          <div class="content">
+            <h2 class="title">ومضة</h2>
+            <p class="summary">ومضة</p>
+            <div class="meta">
+              <div class="meta-item">
+                <div class="label">DATE</div>
+                <div class="value">22/09/2025</div>
+              </div>
+              <div class="meta-item">
+                <div class="label">LOCATION</div>
+                <div class="value">City Hub</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="card"
+          data-name="امسية عطاء منكم واليكم"
+          data-admin-level="9"
+          data-full-description="This is an executive summary of the Hackathon. It's a high-energy coding marathon focused on rapid prototyping and problem-solving."
+          data-extra-detail-description="This year's Hackathon will feature mentorship from industry leaders, dedicated workshops on emerging technologies, and a grand prize for the most innovative solution. Teams will present their work to a panel of judges. Networking opportunities with potential employers will also be available throughout the event."
+          data-images="images/RAM1.jpg,images/RAM2.jpg,images/RAM3.jpg,images/RAM4.jpg,images/RAM5.jpg"
+          data-event-type="upcoming"
+        >
+          <img class="thumb" src="images/RAM1.jpg" alt="Hackathon" />
+          <div class="content">
+            <h2 class="title">امسية عطاء منكم واليكم</h2>
+            <p class="summary">امسية عطاء منكم واليكم</p>
+            <div class="meta">
+              <div class="meta-item">
+                <div class="label">DATE</div>
+                <div class="value">22/09/2025</div>
+              </div>
+              <div class="meta-item">
+                <div class="label">LOCATION</div>
+                <div class="value">City Hub</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="card"
+          data-name="مخيم عينك على ذاتك 2"
+          data-admin-level="8"
+          data-full-description="Hands-on introduction to practical machine learning workflows with notebooks and real datasets."
+          data-extra-detail-description="This comprehensive AI Workshop will cover data preprocessing, model selection, training, and evaluation using Python and popular libraries like scikit-learn and TensorFlow. Participants are encouraged to bring their laptops for a fully interactive experience."
+          data-images="images/CAMP11.jpg,images/CAMP12.jpg,images/CAMP13.jpg,images/CAMP14.jpg,images/CAMP15.jpg"
+          data-event-type="upcoming"
+        >
+          <img class="thumb" src="images/CAMP11.jpg" alt="AI Workshop" />
+          <div class="content">
+            <h2 class="title">مخيم عينك على ذاتك 2</h2>
+            <p class="summary">مخيم عينك على ذاتك 2</p>
+            <div class="meta">
+              <div class="meta-item">
+                <div class="label">DATE</div>
+                <div class="value">20-21/5/2025</div>
+              </div>
+              <div class="meta-item">
+                <div class="label">LOCATION</div>
+                <div class="value">An-Najah University</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="card"
+          data-name="الامسية الرمضانية عيون ملتمة لنهضة الامة"
+          data-admin-level="8"
+          data-full-description="Hands-on introduction to practical machine learning workflows with notebooks and real datasets."
+          data-extra-detail-description="This comprehensive AI Workshop will cover data preprocessing, model selection, training, and evaluation using Python and popular libraries like scikit-learn and TensorFlow. Participants are encouraged to bring their laptops for a fully interactive experience."
+          data-images="images/RAM11.jpg,images/RAM12.jpg,images/RAM13.jpg,images/RAM14.jpg,images/RAM15.jpg"
+          data-event-type="upcoming"
+        >
+          <img class="thumb" src="images/RAM11.jpg" alt="AI Workshop" />
+          <div class="content">
+            <h2 class="title">الامسية الرمضانية عيون ملتمة لنهضة الامة</h2>
+            <p class="summary">الامسية الرمضانية عيون ملتمة لنهضة الامة</p>
+            <div class="meta">
+              <div class="meta-item">
+                <div class="label">DATE</div>
+                <div class="value">20-21/5/2025</div>
+              </div>
+              <div class="meta-item">
+                <div class="label">LOCATION</div>
+                <div class="value">An-Najah University</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="card"
+          data-name="معرض الشبكة العربية للابتكار"
+          data-admin-level="8"
+          data-full-description="Hands-on introduction to practical machine learning workflows with notebooks and real datasets."
+          data-extra-detail-description="This comprehensive AI Workshop will cover data preprocessing, model selection, training, and evaluation using Python and popular libraries like scikit-learn and TensorFlow. Participants are encouraged to bring their laptops for a fully interactive experience."
+          data-images="images/EXB21.jpg,images/EXB22.jpg,images/EXB23.jpg,images/EXB24.jpg,images/EXB25.jpg"
+          data-event-type="upcoming"
+        >
+          <img class="thumb" src="images/EXB21.jpg" alt="AI Workshop" />
+          <div class="content">
+            <h2 class="title">معرض الشبكة العربية للابتكار</h2>
+            <p class="summary">معرض الشبكة العربية للابتكار</p>
+            <div class="meta">
+              <div class="meta-item">
+                <div class="label">DATE</div>
+                <div class="value">20-21/5/2025</div>
+              </div>
+              <div class="meta-item">
+                <div class="label">LOCATION</div>
+                <div class="value">An-Najah University</div>
+              </div>
+            </div>
+          </div>
+          <div class="cta"><button class="btn btn-book">Book now</button></div>
+        </article>
+      </section>
+    </div>
+    <div id="eventModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="modalBody">
+          <h2 class="modal-title"></h2>
+          <div class="modal-image-slider">
+            <div class="slider-controls">
+              <button class="slider-prev">‹</button>
+              <button class="slider-next">›</button>
+            </div>
+            <img class="modal-image" src="" alt="Event image" />
+            <div class="slider-dots"></div>
+          </div>
+          <p class="modal-full-description"></p>
+          <p class="modal-extra-detail-description"></p>
+          <div class="modal-meta-details meta">
+            <!-- Meta items will be populated here -->
+          </div>
+          <div class="modal-cta">
+            <button class="btn btn-book">Book now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="events.js"></script>
+  </body>
+</html>
