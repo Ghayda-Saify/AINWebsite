@@ -1,15 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>AIN - Contact Us</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Arab Innovation</title>
+    <link rel="stylesheet" href="contact.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "1fmz9EiPklZhmgvWt",
+            });
+        })();
+    </script>
 </head>
 <body>
-	<header id="site-header"></header>
-	<!-- محتوى الصفحة هنا -->
-	<footer id="site-footer"></footer>
-	<script src="assets/js/header.js"></script>
-	<script src="assets/js/footer.js"></script>
+    <div class="contact-container">
+        <!-- Background Elements -->
+        <div class="background-elements">
+            <div class="bg-shape shape-1"></div>
+            <div class="bg-shape shape-2"></div>
+            <div class="bg-shape shape-3"></div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="contact-content">
+            <div class="contact-header">
+                <h1>Get In Touch</h1>
+                <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+            </div>
+            
+            <div class="contact-body">
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="icon-circle">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Our Location</h3>
+                        <p>Old An-Najah University Street, Nablus-Palestine</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="icon-circle">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3>Phone Number</h3>
+                        <p>+970 598 317 517</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="icon-circle">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email Address</h3>
+                        <p>ainannu@arabinnovation.net</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="icon-circle">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Working Hours</h3>
+                        <p>Sun - Thu: 8:00 AM - 3:30 PM</p>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <div class="input-with-icon">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="name" name="name" required>
+                                <label for="name">Your Name</label>
+                            </div>
+                            <span class="error-message" id="nameError"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input-with-icon">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="email" name="email" required>
+                                <label for="email">Your Email</label>
+                                <span class="email-hint">example@domain.com</span>
+                            </div>
+                            <span class="error-message" id="emailError"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input-with-icon">
+                                <i class="fas fa-tag"></i>
+                                <input type="text" id="subject" name="subject" required>
+                                <label for="subject">Subject</label>
+                            </div>
+                            <span class="error-message" id="subjectError"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input-with-icon">
+                                <div class="comm">
+                                <i class="fas fa-comment"></i>
+                                </div>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                                <label for="message">Your Message</label>
+                            </div>
+                            <span class="error-message" id="messageError"></span>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                    
+                    <div id="successMessage" class="success-message">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Message Sent Successfully!</h3>
+                        <p>Thank you for contacting us. We'll get back to you soon.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Map Section -->
+            <div class="map-section">
+                <div class="section-header">
+                    <h2>Find Us</h2>
+                    <p>Visit our headquarters at the Innovation Park</p>
+                </div>
+                <div class="map-container">
+                    <div id="map"></div>
+                    <div class="map-overlay">
+                        <div class="map-info">
+                            <h3><i class="fas fa-map-marker-alt"></i> Arab Innovation Network</h3>
+                            <p>Innovation Park, Nablus-Palestine</p>
+                            <p>Open Sunday to Thursday, 8:00 AM - 3:30 PM</p>
+                            <button class="directions-btn">
+                                <i class="fas fa-route"></i> Get Directions
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Social Links -->
+        <div class="social-links">
+            <a href="https://www.facebook.com/share/1CVmRErKEj/?mibextid=LQQJ4d" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/annuain?igsh=NjNmYzZmd3R4cW5j" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <!-- Email Verification Modal -->
+    <div id="emailVerificationModal" class="email-verification-modal">
+        <div class="email-verification-content">
+            <div class="verification-header">
+                <div class="verification-icon">
+                    <i class="fas fa-envelope"></i>
+                    <div class="verification-badge">
+                        <i class="fas fa-exclamation"></i>
+                    </div>
+                </div>
+                <h2>Email Verification Required</h2>
+                <p>We need to verify your email address before sending your message</p>
+            </div>
+            
+            <div class="verification-body">
+                <div class="verification-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div class="progress-steps">
+                        <span class="step active">Checking format</span>
+                        <span class="step">Validating domain</span>
+                        <span class="step">Verifying existence</span>
+                    </div>
+                </div>
+                
+                <div class="verification-details">
+                    <div class="detail-item">
+                        <i class="fas fa-check-circle valid"></i>
+                        <span>Email format is correct</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-spinner fa-spin checking"></i>
+                        <span>Checking domain validity</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-clock waiting"></i>
+                        <span>Verifying email existence</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="error-modal">
+        <div class="error-modal-overlay"></div>
+        <div class="error-modal-content">
+            <div class="error-header">
+                <i class="fas fa-exclamation-circle"></i>
+                <h3>Unable to Verify Email</h3>
+            </div>
+            <div class="error-body">
+                <p id="errorMessageText">The email address <strong id="enteredEmail"></strong> could not be verified.</p>
+                <div class="error-suggestions">
+                    <p><strong>Please consider:</strong></p>
+                    <ul>
+                        <li>Checking for typographical errors</li>
+                        <li>Using a different email provider</li>
+                        <li>Ensuring the email address is active</li>
+                        <li>Contacting your email provider if issues persist</li>
+                    </ul>
+                </div>
+                <!-- Allowed Domains Section -->
+                <div id="allowedDomainsSection" class="allowed-domains-section" style="display: none;">
+                    <div class="domains-separator">
+                        <span>Accepted Email Providers</span>
+                    </div>
+                    <div class="domains-grid">
+                        <div class="domain-item"><i class="fas fa-check"></i> @gmail.com</div>
+                        <div class="domain-item"><i class="fas fa-check"></i> @yahoo.com</div>
+                        <div class="domain-item"><i class="fas fa-check"></i> @hotmail.com</div>
+                        <div class="domain-item"><i class="fas fa-check"></i> @outlook.com</div>
+                        <div class="domain-item"><i class="fas fa-check"></i> @aol.com</div>
+                        <div class="domain-item"><i class="fas fa-check"></i> @icloud.com</div>
+                        <div class="domain-item"><i class="fas fa-check"></i> @protonmail.com</div>
+                        <div class="domain-item"><i class="fas fa-check"></i> @live.com</div>
+                        <div class="domain-item"><i class="fas fa-check"></i> @arabinnovation.net</div>
+                        <div class="domain-item"><i class="fas fa-check"></i> @najah.edu</div>
+                    </div>
+                    <div class="domains-note">
+                        <i class="fas fa-info-circle"></i>
+                        <span>These are the currently accepted email providers</span>
+                    </div>
+                </div>
+            </div>
+            <div class="error-footer">
+                <button class="error-btn primary" id="retryVerification">Try Verification Again</button>
+                <button class="error-btn secondary" id="editEmail">Edit Email Address</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="contact.js"></script>
 </body>
 </html>
