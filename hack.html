@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIN Hackathon 2025 - Code the Future</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+        }
+        
+        .code-font {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .turquoise-primary {
+            color: #64AABA;
+        }
+        
+        .turquoise-bg {
+            background-color: #64AABA;
+        }
+        
+        .turquoise-light {
+            color: #7ab8c5;
+        }
+        
+        .turquoise-bg-light {
+            background-color: #7ab8c5;
+        }
+        
+        .turquoise-subtle {
+            color: #4a8a9a;
+        }
+        
+        .card-shadow {
+            box-shadow: 0 4px 20px rgba(100, 170, 186, 0.1);
+        }
+        
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(100, 170, 186, 0.15);
+        }
+        
+        .gradient-turquoise {
+            background: linear-gradient(135deg, #64AABA, #7ab8c5);
+        }
+        
+        .border-turquoise {
+            border-color: #64AABA;
+        }
+        
+        .typing-animation {
+            overflow: hidden;
+            border-right: 2px solid #64AABA;
+            white-space: nowrap;
+            animation: typing 4s steps(50, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #64AABA; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .countdown-box {
+            background: linear-gradient(135deg, #f0fdff, #e6fffa);
+            border: 1px solid #64AABA;
+        }
+        
+        .feature-icon {
+            background: linear-gradient(135deg, #64AABA, #7ab8c5);
+        }
+        
+        .detail-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.8s ease-out, padding 0.8s ease-out;
+        }
+        
+        .detail-panel.active {
+            max-height: 4000px;
+            padding: 2rem;
+        }
+        
+        .pulse-glow {
+            animation: pulseGlow 2s infinite;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(100, 170, 186, 0.3);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 40px rgba(100, 170, 186, 0.5);
+                transform: scale(1.05);
+            }
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <div class="container mx-auto px-6 py-16">
+        <div class="text-center mb-16 fade-in">
+            <div class="inline-flex items-center justify-center w-24 h-24 turquoise-bg rounded-3xl mb-8 pulse-glow">
+                <svg class="w-14 h-14 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                </svg>
+            </div>
+            
+            <h1 class="text-8xl font-bold mb-6">
+                <span class="turquoise-primary">AIN</span> <span class="text-gray-800">HACKATHON</span>
+            </h1>
+            
+            <div class="typing-animation text-3xl turquoise-subtle mb-8 mx-auto max-w-4xl code-font">
+                while(innovation) { code(); create(); win(); }
+            </div>
+            
+            <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-12">
+                48 hours of pure innovation intensity. Build groundbreaking solutions, compete with the best developers, 
+                and create amazing projects. Join the ultimate coding hackathon where creativity meets technology.
+            </p>
+            
+            <div class="max-w-2xl mx-auto">
+                <div class="countdown-box rounded-2xl p-8 card-shadow">
+                    <h3 class="turquoise-primary text-lg font-semibold mb-6 code-font">HACKATHON STARTS IN:</h3>
+                    <div class="grid grid-cols-4 gap-6 text-center">
+                        <div>
+                            <div class="text-4xl font-bold turquoise-primary mb-2" id="days">00</div>
+                            <div class="text-gray-500 text-sm font-medium code-font">DAYS</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-bold turquoise-primary mb-2" id="hours">00</div>
+                            <div class="text-gray-500 text-sm font-medium code-font">HOURS</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-bold turquoise-primary mb-2" id="minutes">00</div>
+                            <div class="text-gray-500 text-sm font-medium code-font">MINUTES</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-bold turquoise-primary mb-2" id="seconds">00</div>
+                            <div class="text-gray-500 text-sm font-medium code-font">SECONDS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto">
+            <div class="bg-white rounded-3xl p-8 md:p-12 card-shadow hover-lift border border-gray-100">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-8">
+                        <div>
+                            <h2 class="text-5xl font-bold text-gray-800 mb-6">Code. Create. Compete.</h2>
+                            <p class="text-gray-600 text-lg leading-relaxed">
+                                Join 200+ developers, designers, and innovators in the most intense coding competition. 
+                                Build groundbreaking solutions, collaborate with amazing teams, and showcase your skills 
+                                to industry leaders and investors.
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="gradient-turquoise rounded-2xl p-6 text-center text-white">
+                                <svg class="w-10 h-10 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <h3 class="font-bold text-xl mb-2">Duration</h3>
+                                <p class="text-lg">48 Hours</p>
+                                <p class="text-sm opacity-90 code-font">April 15-17, 2025</p>
+                            </div>
+
+                            <div class="bg-gray-50 border-2 border-turquoise rounded-2xl p-6 text-center">
+                                <svg class="w-10 h-10 turquoise-primary mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                </svg>
+                                <h3 class="font-bold text-xl mb-2 text-gray-800">Location</h3>
+                                <p class="text-lg text-gray-600">Innovation Hub</p>
+                                <p class="text-sm text-gray-500">Palestine</p>
+                            </div>
+
+                            <div class="bg-gray-50 border-2 border-turquoise rounded-2xl p-6 text-center">
+                                <svg class="w-10 h-10 turquoise-primary mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                                <h3 class="font-bold text-xl mb-2 text-gray-800">Participants</h3>
+                                <p class="text-lg text-gray-600">200+ Hackers</p>
+                                <p class="text-sm text-gray-500">50 Teams Max</p>
+                            </div>
+
+                            <div class="gradient-turquoise rounded-2xl p-6 text-center text-white">
+                                <svg class="w-10 h-10 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                                </svg>
+                                <h3 class="font-bold text-xl mb-2">Prize Pool</h3>
+                                <p class="text-lg">$50,000</p>
+                                <p class="text-sm opacity-90">+ Incubation</p>
+                            </div>
+                        </div>
+
+                        <div class="text-center lg:text-left">
+                            <button onclick="toggleDetails('hackathon')" class="gradient-turquoise text-white font-bold py-5 px-10 rounded-2xl transition-all duration-300 transform hover:scale-105 card-shadow text-lg">
+                                <span class="flex items-center justify-center space-x-3">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                    </svg>
+                                    <span>Join the Hackathon</span>
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="w-full h-96 gradient-turquoise rounded-3xl flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 bg-black bg-opacity-10"></div>
+                            <div class="relative z-10 text-center text-white">
+                                <div class="code-font text-lg mb-6 opacity-90">
+                                    <div>function hackathon() {</div>
+                                    <div class="ml-4">while(coding) {</div>
+                                    <div class="ml-8">innovate();</div>
+                                    <div class="ml-8">collaborate();</div>
+                                    <div class="ml-8">win();</div>
+                                    <div class="ml-4">}</div>
+                                    <div>}</div>
+                                </div>
+                                <svg class="w-24 h-24 mx-auto opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="text-center">
+                                <div class="text-4xl font-bold turquoise-primary code-font">48</div>
+                                <div class="text-gray-500 text-sm">Hours of Coding</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-4xl font-bold turquoise-primary code-font">15</div>
+                                <div class="text-gray-500 text-sm">Tech Mentors</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-4xl font-bold turquoise-primary code-font">24/7</div>
+                                <div class="text-gray-500 text-sm">Support</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="hackathon-details" class="detail-panel bg-white rounded-3xl mt-8 card-shadow border border-gray-100">
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-4xl font-bold text-gray-800 mb-8 flex items-center">
+                                <svg class="w-10 h-10 mr-4 turquoise-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                Event Timeline
+                            </h3>
+                            <div class="space-y-6">
+                                <div class="gradient-turquoise rounded-2xl p-8 text-white">
+                                    <h4 class="font-bold text-2xl mb-3 code-font">Day 1: Kickoff & Team Formation</h4>
+                                    <p class="mb-4 text-lg opacity-90">Registration, Opening Ceremony & Hacking Begins</p>
+                                    <div class="space-y-2 opacity-80 code-font text-sm">
+                                        <div>• 09:00 AM - Registration & Breakfast</div>
+                                        <div>• 10:00 AM - Opening Ceremony</div>
+                                        <div>• 11:00 AM - Team Formation</div>
+                                        <div>• 12:00 PM - Hacking Begins!</div>
+                                        <div>• 06:00 PM - Dinner & Networking</div>
+                                        <div>• 11:59 PM - Midnight Fuel ☕</div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-gray-50 border-2 border-turquoise rounded-2xl p-8">
+                                    <h4 class="text-gray-800 font-bold text-2xl mb-3 code-font">Day 2: Development & Mentorship</h4>
+                                    <p class="text-gray-600 mb-4 text-lg">Intensive Coding & Expert Guidance</p>
+                                    <div class="text-gray-600 space-y-2 code-font text-sm">
+                                        <div>• 08:00 AM - Breakfast & Energy Boost</div>
+                                        <div>• 10:00 AM - Mentor Office Hours</div>
+                                        <div>• 12:00 PM - Lunch & Tech Talks</div>
+                                        <div>• 02:00 PM - API Workshops</div>
+                                        <div>• 06:00 PM - Dinner Break</div>
+                                        <div>• 08:00 PM - Final Sprint Begins</div>
+                                    </div>
+                                </div>
+
+                                <div class="gradient-turquoise rounded-2xl p-8 text-white">
+                                    <h4 class="font-bold text-2xl mb-3 code-font">Day 3: Demo & Awards</h4>
+                                    <p class="mb-4 text-lg opacity-90">Project Submissions & Judging</p>
+                                    <div class="space-y-2 opacity-80 code-font text-sm">
+                                        <div>• 09:00 AM - Final Touches</div>
+                                        <div>• 12:00 PM - Submission Deadline</div>
+                                        <div>• 01:00 PM - Lunch & Demo Setup</div>
+                                        <div>• 02:00 PM - Project Presentations</div>
+                                        <div>• 05:00 PM - Judging & Deliberation</div>
+                                        <div>• 06:00 PM - Awards Ceremony 🏆</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="text-3xl font-bold text-gray-800 mb-6">Competition Tracks</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-turquoise">
+                                    <h4 class="turquoise-primary font-bold mb-2">🤖 AI & Machine Learning</h4>
+                                    <p class="text-gray-600 text-sm">Build intelligent solutions using AI/ML technologies</p>
+                                </div>
+                                <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-turquoise">
+                                    <h4 class="turquoise-primary font-bold mb-2">🌐 Web3 & Blockchain</h4>
+                                    <p class="text-gray-600 text-sm">Create decentralized applications and smart contracts</p>
+                                </div>
+                                <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-turquoise">
+                                    <h4 class="turquoise-primary font-bold mb-2">📱 Mobile Innovation</h4>
+                                    <p class="text-gray-600 text-sm">Develop cutting-edge mobile applications</p>
+                                </div>
+                                <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-turquoise">
+                                    <h4 class="turquoise-primary font-bold mb-2">🌍 Social Impact</h4>
+                                    <p class="text-gray-600 text-sm">Solutions for social and environmental challenges</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-3xl font-bold text-gray-800 mb-6 flex items-center">
+                                <svg class="w-8 h-8 mr-3 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                                </svg>
+                                Prize Pool
+                            </h3>
+                            <div class="space-y-4">
+                                <div class="bg-gradient-to-r from-yellow-400 to-orange-500 rounded-2xl p-6 text-center text-white">
+                                    <div class="text-4xl mb-2">🥇</div>
+                                    <h4 class="font-bold text-xl mb-2">1st Place</h4>
+                                    <p class="text-2xl font-bold">Grand Prize</p>
+                                    <p class="text-sm opacity-90">+ Incubation Program</p>
+                                </div>
+                                
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="bg-gray-100 border-2 border-turquoise rounded-xl p-4 text-center">
+                                        <div class="text-2xl mb-2">🥈</div>
+                                        <h4 class="text-gray-800 font-bold">2nd Place</h4>
+                                        <p class="turquoise-primary text-lg font-bold">Runner-up Prize</p>
+                                    </div>
+                                    <div class="bg-gray-100 border-2 border-turquoise rounded-xl p-4 text-center">
+                                        <div class="text-2xl mb-2">🥉</div>
+                                        <h4 class="text-gray-800 font-bold">3rd Place</h4>
+                                        <p class="turquoise-primary text-lg font-bold">Third Place Prize</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-gray-50 border-2 border-turquoise rounded-xl p-4">
+                                    <h4 class="turquoise-primary font-bold mb-3">Special Awards</h4>
+                                    <div class="space-y-2 text-sm text-gray-600">
+                                        <div>• Best AI Solution</div>
+                                        <div>• Most Creative Project</div>
+                                        <div>• People's Choice Award</div>
+                                        <div>• Best Design Award</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="text-3xl font-bold text-gray-800 mb-6 flex items-center">
+                                <svg class="w-8 h-8 mr-3 turquoise-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                                Register Now
+                            </h3>
+                            
+                            <div class="text-center space-y-6">
+                                <div class="p-8 bg-gray-50 rounded-2xl border-2 border-turquoise">
+                                    <svg class="w-20 h-20 turquoise-primary mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                    </svg>
+                                    <h4 class="text-gray-800 font-bold text-2xl mb-3">Ready to Code the Future?</h4>
+                                    <p class="text-gray-600 mb-6">Join 200+ developers in the ultimate coding challenge. Register now and secure your spot!</p>
+                                    
+                                    <div class="space-y-3 text-gray-600 text-sm mb-8">
+                                        <div class="flex items-center justify-center space-x-2">
+                                            <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                            </svg>
+                                            <span>Free registration</span>
+                                        </div>
+                                        <div class="flex items-center justify-center space-x-2">
+                                            <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                            </svg>
+                                            <span>All meals included</span>
+                                        </div>
+                                        <div class="flex items-center justify-center space-x-2">
+                                            <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                            </svg>
+                                            <span>Swag & certificates</span>
+                                        </div>
+                                        <div class="flex items-center justify-center space-x-2">
+                                            <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                            </svg>
+                                            <span>Networking opportunities</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="inline-block w-full gradient-turquoise text-white font-bold py-5 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 card-shadow text-lg">
+                                    <span class="flex items-center justify-center space-x-3">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                        </svg>
+                                        <span class="code-font">REGISTER_NOW()</span>
+                                    </span>
+                                </a>
+                                
+                                <p class="text-gray-500 text-xs code-font">
+                                    // Limited spots available - register early!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-16 pt-8 border-t border-gray-200">
+                    <h3 class="text-2xl font-bold text-gray-800 text-center mb-8">Powered By</h3>
+                    <div class="grid md:grid-cols-5 gap-8 text-center">
+                        <div class="flex flex-col items-center space-y-2">
+                            <div class="w-16 h-16 bg-gray-100 border-2 border-turquoise rounded-xl flex items-center justify-center">
+                                <span class="turquoise-primary code-font text-lg font-bold">AWS</span>
+                            </div>
+                            <span class="text-gray-600 text-sm">Cloud Partner</span>
+                        </div>
+                        <div class="flex flex-col items-center space-y-2">
+                            <div class="w-16 h-16 bg-gray-100 border-2 border-turquoise rounded-xl flex items-center justify-center">
+                                <span class="turquoise-primary code-font text-lg font-bold">API</span>
+                            </div>
+                            <span class="text-gray-600 text-sm">API Sponsor</span>
+                        </div>
+                        <div class="flex flex-col items-center space-y-2">
+                            <div class="w-16 h-16 bg-gray-100 border-2 border-turquoise rounded-xl flex items-center justify-center">
+                                <span class="turquoise-primary code-font text-lg font-bold">AI</span>
+                            </div>
+                            <span class="text-gray-600 text-sm">AI Partner</span>
+                        </div>
+                        <div class="flex flex-col items-center space-y-2">
+                            <div class="w-16 h-16 bg-gray-100 border-2 border-turquoise rounded-xl flex items-center justify-center">
+                                <span class="turquoise-primary code-font text-lg font-bold">DEV</span>
+                            </div>
+                            <span class="text-gray-600 text-sm">Dev Tools</span>
+                        </div>
+                        <div class="flex flex-col items-center space-y-2">
+                            <div class="w-16 h-16 bg-gray-100 border-2 border-turquoise rounded-xl flex items-center justify-center">
+                                <span class="turquoise-primary code-font text-lg font-bold">$$$</span>
+                            </div>
+                            <span class="text-gray-600 text-sm">Prize Sponsor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const hackathonDate = new Date('2025-04-15T09:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = hackathonDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
+            if (distance < 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+            }
+        }
+
+        function toggleDetails(eventType) {
+            const panel = document.getElementById(eventType + '-details');
+            const isActive = panel.classList.contains('active');
+            
+            if (!isActive) {
+                panel.classList.add('active');
+                setTimeout(() => {
+                    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            } else {
+                panel.classList.remove('active');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        });
+    </script>
+</body>
+</html>
