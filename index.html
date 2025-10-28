@@ -1,17 +1,1626 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>AIN - Home</title>
-	<link rel="stylesheet" href="assets/css/base.css">
+    <link rel="icon" href="images/AIN/ain.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arab Innovation Network</title>
+
+    <style>
+        .bottom-slider {
+            padding: 2rem 0;
+            background: white;
+        }
+
+        .slider-container {
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .slider-track {
+            display: flex;
+            gap: 1rem;
+            animation: slideBottom 25s linear infinite;
+            cursor: pointer;
+            width: max-content;
+
+        }
+
+
+        .slider-track:hover {
+            animation-play-state: paused;
+        }
+
+        .slider-item {
+            flex: 0 0 auto;
+            width: 100px;
+            height: 80px;
+            border-radius: 12px;
+            background: linear-gradient(45deg, #e3f2fd, #bbdefb);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #02B6ED;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .slider-item:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+
+        @keyframes slideBottom {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .slider-track {
+            animation: slideBottom 15s linear infinite;
+        }
+
+    </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: white;
+            color: #02B6ED;
+            overflow-x: hidden;
+        }
+
+        .section-title {
+            font-family: 'Baloo 2', cursive;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #02B6ED;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        /* Header with Logo and Navigation */
+        .header {
+            background: linear-gradient(135deg, #02b6ed 0%, #0e94bd 100%);
+            color: white;
+            padding: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #02B6ED;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e3f2fd 100%);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: #02B6ED;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Innovation Showcase */
+        .innovation-showcase {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #02B6ED;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #02B6ED, #2397ba);
+            border-radius: 2px;
+        }
+
+        .showcase-slider {
+            position: relative;
+            overflow: hidden;
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 200px;
+        }
+
+        .showcase-track {
+            display: flex;
+            gap: 2rem;
+            animation: scroll 20s linear infinite;
+            width: calc(300px * 20);
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .showcase-item {
+            min-width: 280px;
+            height: 160px;
+            background: linear-gradient(135deg, #02B6ED, #2a7783);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 8px 25px rgb(45, 111, 120);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .showcase-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+        }
+
+        .showcase-item:hover::before {
+            animation: shine 0.6s ease;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        /* Images Gallery */
+        .gallery {
+            padding: 4rem 0;
+            background: #f8f9ff;
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #e3f2fd, #bbdefb);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #02B6ED;
+        }
+
+        .gallery-content {
+            padding: 1.5rem;
+        }
+
+        .gallery-title {
+            font-size: 1.3rem;
+            color: #02B6ED;
+            margin-bottom: 0.5rem;
+        }
+
+        .see-more-btn {
+            display: block;
+            margin: 2rem auto;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 2px solid #02B6ED;
+            color: #2a7783;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .see-more-btn:hover {
+            background: #02B6ED;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Advertisements */
+        .ads-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .ads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .ad-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8f0fe 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ad-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(33,150,243,0.1), transparent);
+            transition: all 0.6s ease;
+        }
+
+        .ad-card:hover::before {
+            left: 100%;
+        }
+
+        .ad-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .ad-icon {
+            width: 60px;
+            height: 60px;
+            background: #02B6ED;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+
+        .bottom-slider {
+            padding: 2rem 0;
+            background: white;
+        }
+
+        .slider-container {
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .slider-track {
+            width: max-content;
+            display: flex;
+            gap: 1rem;
+            animation: slideBottom 60s linear infinite;
+        }
+
+        @keyframes slideBottom {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .slider-track.animate {
+            animation: slideBottom 20s linear infinite;
+        }
+        .slider-item {
+            min-width: 100px;
+            height: 80px;
+            background: linear-gradient(45deg, #e3f2fd, #bbdefb);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #02B6ED;
+            font-size: 1.5rem;
+        }
+
+
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ads-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+        }
+
+
+        .bottom-slider {
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .slider-container {
+            width: 100%;
+        }
+
+        .slider-track {
+            display: flex;
+            gap: 10px;
+            width: max-content;
+        }
+
+        .slider-item img {
+            display: block;
+            cursor: pointer;
+        }
+
+
+
+        .ad-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .ad-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            margin-top: 0.5rem;
+            border-radius: 8px;
+        }
+
+
+        .team-section {
+            padding: 4rem 2rem;
+            background: #f8f9ff;
+        }
+        .team-container {
+            display: flex;
+            align-items: center;
+        }
+        .team-track {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 1rem;
+            scrollbar-width: none;
+        }
+        .team-track::-webkit-scrollbar {
+            display: none;
+        }
+        .team-member {
+            flex: 0 0 200px;
+        }
+        .member-card {
+            width: 300px;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s;
+        }
+        .member-card img {
+            width: 100%;
+            height: 300px;
+            border-radius: 15px;
+            object-fit: cover;
+            transition: transform 0.3s, filter 0.3s;
+        }
+        .member-card:hover img {
+            transform: scale(1.1);
+            filter: blur(2px);
+        }
+        .member-text {
+            margin-top: 0.5rem;
+        }
+        .member-text h3 {
+            margin: 0;
+            font-size: 1rem;
+            color: #333;
+        }
+        .member-text p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #666;
+        }
+        .member-card:hover .overlay {
+            opacity: 1;
+        }
+        .team-arrow {
+            background: #02B6ED;
+            color: white;
+            border: none;
+            font-size: 2rem;
+            padding: 0 0.8rem;
+            border-radius: 50%;
+            cursor: pointer;
+            margin: 0 3rem;
+            transition: background 0.3s;
+        }
+        .team-arrow:hover {
+            background: #2a7783;
+        }
+
+    </style>
 </head>
 <body>
-	<header id="site-header"></header>
-    <script src="assets/js/header.js"></script>
-    
-	<!-- محتوى الصفحة هنا -->
-	<footer id="site-footer"></footer>
-	<script src="assets/js/footer.js"></script>
+<!-- Header -->
+<header id="site-header"></header>
+<script src="assets/js/header.js"></script>
+
+
+<section class="top-images">
+    <!-- النص فوق الصور -->
+    <div class="overlay-text">
+        <h2>AIN<br>Arabc Innovation University An-Najah National </h2>
+    </div>
+
+    <div class="image-row left">
+        <div class="track">
+            <div class="images">
+                <img src="images/AIN/ph1.png" alt="">
+                <img src="images/AIN/ph2.png" alt="">
+                <img src="images/AIN/ph3.png" alt="">
+                <img src="images/AIN/ph4.png" alt="">
+                <img src="images/AIN/ph5.png" alt="">
+                <img src="images/AIN/ph6.png" alt="">
+                <img src="images/AIN/ph7.png" alt="">
+                <img src="images/AIN/ph8.png" alt="">
+                <img src="images/AIN/ph24.png" alt="">
+            </div>
+            <div class="images">
+                <img src="images/AIN/ph9.png" alt="">
+                <img src="images/AIN/ph10.png" alt="">
+                <img src="images/AIN/ph11.png" alt="">
+                <img src="images/AIN/ph12.png" alt="">
+                <img src="images/AIN/ph13.png" alt="">
+                <img src="images/AIN/ph14.png" alt="">
+                <img src="images/AIN/ph15.png" alt="">
+                <img src="images/AIN/ph16.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="image-row right">
+        <div class="track">
+            <div class="images">
+                <img src="images/AIN/ph17.png" alt="">
+                <img src="images/AIN/ph18.png" alt="">
+                <img src="images/AIN/ph19.png" alt="">
+                <img src="images/AIN/ph20.png" alt="">
+                <img src="images/AIN/ph21.png" alt="">
+                <img src="images/AIN/ph22.png" alt="">
+                <img src="images/AIN/ph23.png" alt="">
+                <img src="images/AIN/ph24.png" alt="">
+            </div>
+            <div class="images">
+                <img src="images/AIN/ph25.png" alt="">
+                <img src="images/AIN/ph26.png" alt="">
+                <img src="images/AIN/ph27.png" alt="">
+                <img src="images/AIN/ph28.png" alt="">
+                <img src="images/AIN/ph29.png" alt="">
+                <img src="images/AIN/ph30.png" alt="">
+                <img src="images/AIN/ph31.png" alt="">
+                <img src="images/AIN/ph32.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="image-row left">
+        <div class="track">
+            <div class="images">
+                <img src="images/AIN/ph4.png" alt="">
+                <img src="images/AIN/ph5.png" alt="">
+                <img src="images/AIN/ph6.png" alt="">
+                <img src="images/AIN/ph7.png" alt="">
+                <img src="images/AIN/ph24.png" alt="">
+                <img src="images/AIN/ph1.png" alt="">
+                <img src="images/AIN/ph2.png" alt="">
+                <img src="images/AIN/ph3.png" alt="">
+
+            </div>
+            <div class="images">
+                <img src="images/AIN/ph9.png" alt="">
+                <img src="images/AIN/ph10.png" alt="">
+                <img src="images/AIN/ph14.png" alt="">
+                <img src="images/AIN/ph15.png" alt="">
+                <img src="images/AIN/ph16.png" alt="">
+                <img src="images/AIN/ph11.png" alt="">
+                <img src="images/AIN/ph12.png" alt="">
+                <img src="images/AIN/ph13.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="image-row right">
+        <div class="track">
+            <div class="images">
+                <img src="images/AIN/ph21.png" alt="">
+                <img src="images/AIN/ph22.png" alt="">
+                <img src="images/AIN/ph23.png" alt="">
+                <img src="images/AIN/ph28.png" alt="">
+                <img src="images/AIN/ph17.png" alt="">
+                <img src="images/AIN/ph18.png" alt="">
+                <img src="images/AIN/ph19.png" alt="">
+                <img src="images/AIN/ph20.png" alt="">
+            </div>
+            <div class="images">
+                <img src="images/AIN/ph29.png" alt="">
+                <img src="images/AIN/ph30.png" alt="">
+                <img src="images/AIN/ph31.png" alt="">
+                <img src="images/AIN/ph32.png" alt="">
+                <img src="images/AIN/ph25.png" alt="">
+                <img src="images/AIN/ph26.png" alt="">
+                <img src="images/AIN/ph27.png" alt="">
+                <img src="images/AIN/ph24.png" alt="">
+
+            </div>
+        </div>
+    </div>
+
+</section>
+<style>
+    .top-images {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        overflow: hidden;
+    }
+
+    .overlay-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        text-align: center;
+        color: white;
+        font-size: 2rem;
+        font-weight: bold;
+        line-height: 1.4;
+        width: 90%;
+    }
+
+    .image-row {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .track {
+        display: flex;
+        width: max-content;
+    }
+
+    .images {
+        display: flex;
+        gap: 0;
+    }
+
+    .images img {
+        width: 200px;
+        height: 150px;
+        object-fit: cover;
+        flex-shrink: 0;
+        filter: brightness(70%);
+        border-radius: 0;
+    }
+
+
+    /* Animations */
+    .left .track {
+        animation: scroll-left 30s linear infinite;
+    }
+
+    .right .track {
+        animation: scroll-right 30s linear infinite;
+    }
+
+    @keyframes scroll-left {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    @keyframes scroll-right {
+        0% { transform: translateX(-50%); }
+        100% { transform: translateX(0); }
+    }
+</style>
+<!-- hamza link	-->
+
+<!-- Advertisements -->
+<section class="ads-section">
+    <div class="section-title">Partnership Opportunities & Events</div>
+    <div class="ads-grid">
+
+        <a href="#"  class="ad-link">
+            <div class="ad-card">
+                <div class="ad-icon">💻</div>
+                <h3>Hackathon 2025</h3>
+                <p>Join our hackathon and create solutions that matter</p>
+                <img src="image/AIN/ph2.png" alt="Hackathon" class="ad-image">
+            </div>
+        </a>
+
+        <a href="#"  class="ad-link">
+            <div class="ad-card">
+                <div class="ad-icon">🏕️</div>
+                <h3>Innovation Camp</h3>
+                <p>Experience an immersive camp with workshops and mentors</p>
+                <img src="image/AIN/ph1.png" alt="Innovation Camp" class="ad-image">
+            </div>
+        </a>
+
+        <a href="#"  class="ad-link">
+            <div class="ad-card">
+                <div class="ad-icon">🎯</div>
+                <h3>30 Challenge</h3>
+                <p>Participate in our 30 innovation challenge</p>
+                <img src="image/AIN/ph10.png" alt="30-Day Challenge" class="ad-image">
+            </div>
+        </a>
+
+        <a href="#" class="ad-link">
+            <div class="ad-card">
+                <div class="ad-icon">📚</div>
+                <h3>Educational Course</h3>
+                <p>Enroll in our specialized courses to boost your skills</p>
+                <img src="image/AIN/ph3.png" alt="Educational Course" class="ad-image">
+            </div>
+        </a>
+
+    </div>
+</section>
+
+<style>
+    .ad-link {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .ad-link:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+</style>
+<!-- Comments Section -->
+<section class="comments-section">
+    <h2 class="section-title">Popular Comments</h2>
+    <div class="comments-grid">
+        <div class="comment-card from-right">
+            <img src="image/comments/com1.png" height="100" width="500" />
+        </div>
+        <div class="comment-card from-right">
+
+            <img src="image/comments/com2.png"/>
+       </div>
+        <div class="comment-card from-left">
+
+            <img src="image/comments/com3.png" />
+        </div>
+        <div class="comment-card from-left">
+
+            <img src="image/comments/com4.png" />
+      </div>
+    </div>
+</section>
+
+<style>
+    .comments-section {
+        padding: 4rem 2rem;
+        background: #f9fafc;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        color: #222;
+    }
+
+    .comments-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .comment-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 1rem;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        text-align: center;
+        opacity: 0;
+        transform: translateX(0);
+        transition: transform 1.5s ease, opacity 1.5s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .comment-card img {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 12px;
+    }
+
+
+
+    .comment-card p {
+        font-size: 1rem;
+        color: #444;
+        line-height: 1.5;
+    }
+
+    .from-left {
+        transform: translateX(-100vw);
+    }
+
+    .from-right {
+        transform: translateX(100vw);
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('.comment-card');
+
+        function handleScroll() {
+            const triggerBottom = window.innerHeight * 0.9;
+
+            cards.forEach((card, index) => {
+                const cardTop = card.getBoundingClientRect().top;
+
+                if (cardTop < triggerBottom && cardTop > 0) {
+                    card.style.transform = 'translateX(0)';
+                    card.style.opacity = 1;
+                } else {
+                    if (index < 2) {
+                        card.style.transform = 'translateX(100vw)';
+                    } else {
+                        card.style.transform = 'translateX(-100vw)';
+                    }
+                    card.style.opacity = 0;
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleScroll);
+        handleScroll();
+    });
+</script>
+
+<section class="team-section">
+    <h2 class="section-title">Our Team</h2>
+    <div class="team-container">
+        <button class="team-arrow" id="prevTeam">‹</button>
+        <div class="team-track">
+
+            <!-- 1. President -->
+            <div class="team-member">
+                <a href="about.html" class="member-link">
+                    <div class="member-card">
+                        <img src="images/team/M1.jpg"/>
+                        <div class="member-text">
+                            <h3>Mohammad Sweilem</h3>
+                            <p>President</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 2. Vice President -->
+            <div class="team-member">
+                <a href="about.html" class="member-link">
+                    <div class="member-card">
+                        <img src="images/team/M2.jpg"/>
+                        <div class="member-text">
+                            <h3>Mohammad Daraghmeh</h3>
+                            <p>Vice President</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 6. Media Chair -->
+            <div class="team-member">
+                <a href="about.html" class="member-link">
+                    <div class="member-card">
+                        <img src="images/team/A.png"/>
+                        <div class="member-text">
+                            <h3>Asmaa Abd Alhadi</h3>
+                            <p>Media Chair</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 7. Membership Chair -->
+            <div class="team-member">
+                <a href="about.html" class="member-link">
+                    <div class="member-card">
+                        <img src="images/team/H.jpg"/>
+                        <div class="member-text">
+                            <h3>Hamza Abdulsalam</h3>
+                            <p>Membership Chair</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 8. Technical Solutions Chair -->
+            <div class="team-member">
+                <a href="about.html" class="member-link">
+                    <div class="member-card">
+                        <img src="images/team/GH.jpg"/>
+                        <div class="member-text">
+                            <h3>Ghaydaa Saify</h3>
+                            <p>Technical Solutions</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 9. Technical Solutions (Tala) -->
+            <div class="team-member">
+                <a href="about.html" class="member-link">
+                    <div class="member-card">
+                        <img src="images/team/tala.jpg"/>
+                        <div class="member-text">
+                            <h3>Tala Alhendi</h3>
+                            <p>Technical Solutions</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 3. Activity Coordinator -->
+            <div class="team-member">
+                <a href="about.html" class="member-link">
+                    <div class="member-card">
+                        <img src="images/team/M3.png"/>
+                        <div class="member-text">
+                            <h3>Mosab Haddad</h3>
+                            <p>Activity Coordinator</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 4. Treasurer -->
+            <div class="team-member">
+                <a href="about.html" class="member-link">
+                    <div class="member-card">
+                        <img src="images/team/N.png"/>
+                        <div class="member-text">
+                            <h3>Najwa Khazendar</h3>
+                            <p>Treasurer</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 5. PR & Outreach -->
+            <div class="team-member">
+                <a href="about.html" class="member-link">
+                    <div class="member-card">
+                        <img src="images/team/S.jpg"/>
+                        <div class="member-text">
+                            <h3>Sadeel Daraghmeh</h3>
+                            <p>PR & Outreach</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="team-member">
+                <a href="about.html" class="member-link">
+                    <div class="member-card">
+                        <img src="images/team/T.jpg"/>
+                        <div class="member-text">
+                            <h3>Teeba Dweikat</h3>
+                            <p>Designer 1</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="team-member">
+                <a href="about.html" class="member-link">
+                    <div class="member-card">
+                        <img src="images/team/SHADI.jpg"/>
+                        <div class="member-text">
+                            <h3>Shadi Salam</h3>
+                            <p>Photographer</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="team-member">
+                <a href="about.html" class="member-link">
+                    <div class="member-card">
+                        <img src="images/team/MIRA.jpg"/>
+                        <div class="member-text">
+                            <h3>Meera Sorady</h3>
+                            <p>Video maker</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+        <button class="team-arrow" id="nextTeam">›</button>
+    </div>
+</section>
+
+<style>.member-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.member-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+</style>
+
+
+<div class="section-spacer"></div>
+<div class="section-spacer"></div>
+
+
+<section class="association-section" dir="rtl">
+    <h2 class="section-title">📌 Most popular questions about AIN</h2>
+
+    <div class="questions-grid">
+        <div class="question-card">
+            <div class="question">1. ما الهدف الأساسي للجمعية؟ <span class="arrow">▼</span></div>
+            <div class="answer">الشبكة العربية للابتكار هي مبادرة تطوعية تهدف إلى تعزيز الابتكار في العالم العربي من خلال تشجيع الشباب على توجيه معارفهم ومهاراتهم ومواردهم نحو الابتكار الصناعي.</div>
+        </div>
+        <div class="question-card">
+            <div class="question">2. ما رسالة الجمعية؟ <span class="arrow">▼</span></div>
+            <div class="answer">تشجيع الابتكارات المرتبطة بالمجال الصناعي من خلال العمل المباشر مع الشركاء الصناعيين لتحديد التحديات التي يواجهها الشباب، وتوفير انتقال مميز لهم من مرحلة الجامعة إلى سوق العمل عبر التدريب والتواصل المهني. كما تسعى الجمعية إلى تقديم أنشطة لا منهجية للطلبة إلى جانب الأنشطة والمسابقات العلمية المتنوعة لجميع التخصصات من خلال مجتمعاتنا.</div>
+        </div>
+        <div class="question-card">
+            <div class="question">3. ما رؤية الجمعية؟ <span class="arrow">▼</span></div>
+            <div class="answer">أن تصبح شبكتنا الرائدة للشباب في وطننا فلسطين من خلال تطوير الإبداع في مجالي العلوم والتكنولوجيا وتوفير الدعم اللازم لهم.</div>
+        </div>
+        <div class="question-card">
+            <div class="question">4. من يمكنه الانتساب إلى الجمعية؟ <span class="arrow">▼</span></div>
+            <div class="answer">يُتاح لجميع طلبة جامعة النجاح الوطنية الانتساب إلى الجمعية.</div>
+        </div>
+
+        <div class="question-card extra" style="display:none;">
+            <div class="question">5. ما الفوائد أو الخدمات التي تقدمها الجمعية للأعضاء؟ <span class="arrow">▼</span></div>
+            <div class="answer">تضم الشبكة ثمانية مجتمعات طلابية لا تقتصر على تخصصات محددة، بل تتيح الفرصة لأي طالب للانضمام إليها بغض النظر عن تخصصه الجامعي. تقدم هذه المجتمعات أنشطة علمية ممزوجة بالجانب الترفيهي، كما تُعزّز روح القيادة، إذ يكون لكل مجتمع قائد مسؤول عن تحقيق الأهداف المنشودة.</div>
+        </div>
+        <div class="question-card extra" style="display:none;">
+            <div class="question">6. هل هناك رسوم اشتراك أم أن العضوية مجانية؟ <span class="arrow">▼</span></div>
+            <div class="answer">الانتساب إلى الجمعية ليس مجانيًا، وإنما يتم تحديد رسوم رمزية للاشتراك.</div>
+        </div>
+        <div class="question-card extra" style="display:none;">
+            <div class="question">7. كيف يمكنني المشاركة أو التطوع مع الجمعية؟ <span class="arrow">▼</span></div>
+            <div class="answer">يُفتح باب الانتساب والتطوع في أوقات محددة وليس بشكل دائم. يمكنكم متابعة صفحة الجمعية أو التواصل معها لمعرفة موعد فتح باب الانتساب.</div>
+        </div>
+        <div class="question-card extra" style="display:none;">
+            <div class="question">8. لماذا أنضم إلى الجمعية؟ وما الذي يميزها؟ <span class="arrow">▼</span></div>
+            <div class="answer">بالإضافة إلى النشاطات العامة، تُقام للأعضاء نشاطات خاصة ومميزة، كما تُوفّر الجمعية فرص تطوع عديدة للأعضاء على مستوى الشبكة وخارجها. ويحق للعضو الترشح للمناصب الإدارية أو رئاسة أحد المجتمعات. كما يحصل الأعضاء على بطاقة عضوية تشمل خصومات لدى أكثر من أربعين متجراً ومطعماً متنوعاً.</div>
+        </div>
+    </div>
+
+    <div style="text-align:center; margin: 1.5rem 0;">
+    </div>
+
+
+    <div style="text-align:center; margin: 1.5rem 0;">
+        <button id="toggleBtn" class="btn-primary">Show more</button>
+    </div>
+</section>
+
+<script>
+    document.querySelectorAll('.question-card').forEach(card => {
+        card.addEventListener('click', () => {
+            card.classList.toggle('active');
+        });
+    });
+
+    const toggleBtn = document.getElementById('toggleBtn');
+    const extras = document.querySelectorAll('.question-card.extra');
+
+    let isShown = false;
+
+    toggleBtn.addEventListener('click', () => {
+        if (!isShown) {
+            extras.forEach(e => e.style.display = 'block');
+            toggleBtn.textContent = "Hide";
+        } else {
+            extras.forEach(e => e.style.display = 'none');
+            toggleBtn.textContent = "Show more";
+        }
+        isShown = !isShown;
+    });
+</script>
+
+<style>
+    .association-section {
+        padding: 1.5rem 1rem;
+        background: linear-gradient(to bottom, #ffffff, #ffffff);
+        border-radius: 20px;
+        max-width: 1100px;
+        margin: 2rem auto;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 1.8rem;
+        font-weight: 900;
+        color: #000000;
+        margin-bottom: 1.5rem;
+        font-family: 'Cairo', sans-serif;
+    }
+
+    .questions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1rem;
+    }
+
+    .question-card {
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 1rem 0.8rem;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        cursor: pointer;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .question-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        background: #f9faff;
+    }
+
+    .question {
+        font-weight: 700;
+        font-size: 1.05rem;
+        color: #000000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'Cairo', sans-serif;
+    }
+
+    .arrow {
+        color: rgb(2, 182, 237);
+        font-size: 1.1rem;
+        transition: transform 0.35s ease;
+    }
+
+    .question-card.active .arrow {
+        transform: rotate(180deg);
+    }
+
+    .answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease, padding 0.35s ease;
+        font-size: 0.95rem;
+        line-height: 1.4;
+        padding-left: 0.5rem;
+        color: #333;
+    }
+
+    .question-card.active .answer {
+        max-height: 450px;
+        margin-top: 0.5rem;
+    }
+
+    .section-spacer {
+        height: 30px;
+    }
+
+    .question::first-letter {
+        color: #02b6ed;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+
+    .btn-primary {
+        display: inline-block;
+        background: #02B6ED;
+        color: #fff;
+        padding: 0.5rem 1.2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.9rem;
+        transition: background 0.3s ease, transform 0.3s ease;
+        margin-top: 1rem;
+    }
+
+    .btn-primary:hover {
+        background: #02b6ed;
+        transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+        .section-title {
+            font-size: 1.5rem;
+        }
+        .question-card {
+            padding: 0.8rem 0.6rem;
+        }
+        .questions-grid {
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+        }
+    }
+</style>
+
+<section class="bottom-slider">
+    <div class="slider-container">
+        <h2 class="section-title">AIN Discounts</h2>
+        <div class="slider-track">
+
+
+            <style>.discount-popup .ticket-box {
+                direction: rtl;
+                unicode-bidi: plaintext;
+            }
+            </style>
+
+
+
+            <div class="slider-item" data-text="خصم 20% على المنيو (غير شامل العروض)"><img src="images/icon/icon1.png" height="80" width="100"/></div>
+            <div class="slider-item" data-text="خصم 10% على البرجر فقط "><img src="images/icon/icon2.png" height="80" width="100"/></div>
+            <div class="slider-item" data-text="خصم 10 شيقل على التذكرة"><img src="images/icon/icon3.png" height="80" width="100"/></div>
+            <div class="slider-item" data-text="خصم 20% على المنيو"><img src="images/icon/icon4.png" height="80" width="100"/></div>
+            <div class="slider-item" data-text="خصم %15"><img src="images/icon/icon5.png" height="80" width="100"/></div>
+            <div class="slider-item" data-text="خصم 15% لا تشمل المفاصلة الشخصية"><img src="images/icon/icon6.png" height="80" width="100"/></div>
+
+
+            <div class="slider-item"
+                 data-text="تفاصيل الخصم :"
+                 data-popup-image="images/icon/o.png">
+                <img src="images/icon/icon36.png" alt="" height="80" width="100">
+            </div>
+
+
+
+            <div class="slider-item" data-text="خصم 20% على المنيو"><img src="images/icon/icon7.png" height="80" width="100"/></div>
+            <div class="slider-item" data-text="خصم %10"><img src="images/icon/icon8.png" height="80" width="100"/></div>
+            <div class="slider-item" data-text="وجبة الزنجر أو الفاهيتا
+20 شيقل بدل 25"><img src="images/icon/icon9.png" height="80" width="100"/></div>
+            <div class="slider-item" data-text="خصم 10%"><img src="images/icon/icon10.png" height="80" width="100"/></div>
+            <div class="slider-item" data-text="خصم 15%"><img src="images/icon/icon11.png" height="80" width="100"/></div>
+            <div class="slider-item" data-text="خصم 20% لا تشمل المفاصلة الشخصية"><img src="images/icon/icon12.png" height="80" width="100"/></div>
+
+
+            <div class="slider-item" data-text="            خصم 30% على الموقع كود الخصم AIN25
+"><img src="images/icon/icon13.png" height="80" width="100"/></div>
+            <div class="slider-item" data-text="خصم 10% على الوجبات الفردية"><img src="images/icon/icon14.png" height="80" width="100"/></div>
+            <div class="slider-item" data-text="خصم 15% على الموقع الالكتروني غير شامل التوصيل كود الخصم AIN26"><img src="images/icon/icon15.png" height="80" width="100"/></div>
+            <div class="slider-item" data-text="خصم 20% على المنيو"><img src="images/icon/icon16.png" height="80" width="100"/></div>
+            <div class="slider-item" data-text="عروض متجددة خاصة بجمعية عين تعرض على صفحة الصالون"><img src="images/icon/icon17.png" height="80" width="100"/></div>
+            <div class="slider-item" data-text="خصم 15%"><img src="images/icon/icon18.png" height="80" width="100"/></div>
+
+            <div class="slider-item" data-text="بيتزا لارج سعرها 45 بدل 60 أو 70 شيقل "><img src="images/icon/icon19.png" height="80" width="100"/></div>
+            <div class="slider-item" data-text="بيع المفرق بسعر الجملة"><img src="images/icon/icon20.png" height="80" width="100"/></div>
+            <div class="slider-item" data-text="خصم 20% على الفاتورة فوق 50 شيقل"><img src="images/icon/icon21.png" height="80" width="110"/></div>
+            <div class="slider-item" data-text="تقديم استشارة مجانية للشعر والبشرة خصم 10% على الطلبات فوق 150 شيقل وخصم 15% على الطلبات فوق 300 شيقل"><img src="images/icon/icon22.png" height="80" width="110"/></div>
+            <div class="slider-item" data-text="خصم 10%"><img src="images/icon/icon23.png" height="80" width="110"/></div>
+            <div class="slider-item" data-text="خصم 25% على الفاتورة فوق 50 شيقل غير شامل العروض"><img src="images/icon/icon24.png" height="80" width="110"/></div>
+
+
+            <div class="slider-item" data-text="خصم 15% "><img src="images/icon/icon25.png" height="80" width="110"/></div>
+            <div class="slider-item" data-text="خصم 15% على المنيو"><img src="images/icon/icon26.png" height="80" width="110"/></div>
+            <div class="slider-item" data-text="خصم 20% فقط على الإكسسوارات"><img src="images/icon/icon27.png" height="80" width="110"/></div>
+            <div class="slider-item"
+                 data-text="‏%10 على المنيو Takeaway  %20 على المنيو Lounge بالفرعين">
+                <img src="images/icon/icon28.png" height="80" width="110"/>
+            </div>
+            <div class="slider-item" data-text="خصم 20%"><img src="images/icon/icon29.png" height="80" width="110"/></div>
+            <div class="slider-item" data-text="خصم %10-5"><img src="images/icon/icon30.png" height="80" width="100"/></div>
+            <div class="slider-item" data-text=" خصم 20% على القطع المشغولة "><img src="images/icon/icon31.png" height="80" width="100"/></div>
+
+
+
+            <div class="slider-item" data-text="بيتزا سمول + ميني كولا =20 شيقل
+            بيتزا لارج+بطاطا+كولا= 50 شيقل
+            بيتزا ميديوم+بطاطا= 30 شيقل
+"><img src="images/icon/icon32.png" height="80" width="100"/></div>
+            <div class="slider-item" data-text="خصم 30% على الفاتورة فوق 50 شيقل غير شامل العروض"><img src="images/icon/icon33.png" height="80" width="100"/></div>
+            <div class="slider-item" data-text="خصم 5%
+            غير شامل البكجات
+            والعروضات
+"><img src="images/icon/icon34.png" height="80" width="100"/></div>
+            <div class="slider-item" data-text="خصم 10%"><img src="images/icon/icon35.png" height="80" width="100"/></div>
+
+
+            <div class="slider-item" data-text="خصم 20% على المنيو"><img src="images/icon/icon37.png" height="80" width="100"/></div>
+            <div class="slider-item" data-text="بروتين وزيت هندي
+    20% شعر طويل
+    10% شعر قصير"><img src="images/icon/icon38.png" height="80" width="100"/></div>
+            <div class="slider-item" data-text="%خصم 10 "><img src="images/icon/icon39.png" height="80" width="100"/></div>
+            <div class="slider-item"
+                 data-text="خصم 40% على Skechers خصم 30% على Charcoal">
+                <img src="images/icon/icon40.png" height="80" width="100"/>
+            </div>
+
+            <div class="slider-item" data-text="خصم 30% لا تشمل المفاصلة الشخصية"><img src="images/icon/icon41.png" height="80" width="100"/></div>
+            <div class="slider-item" data-text="عرض على الحلاقة والسشوار
+وتنظيف البشرة
+90 شيقل بدل 150"><img src="images/icon/icon42.png" height="80" width="100"/></div>
+
+
+        </div>
+    </div>
+
+
+</section>
+
+<style>
+    /* ===== Popup Overlay ===== */
+    .discount-popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.8);
+        background: #02B6ED;
+        padding: 15px;
+        border-radius: 15px;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+        z-index: 10000;
+        text-align: center;
+        width: 250px;
+        max-width: 90%;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s ease;
+    }
+    .discount-popup.active {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    .discount-popup img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+    .discount-popup .ticket-box {
+        background: #f8f8f8;
+        padding: 12px;
+        border-radius: 10px;
+        font-size: 1rem;
+        color: #333;
+        line-height: 1.5;
+        font-weight: bold;
+    }
+</style>
+
+<div class="discount-popup" id="discountPopup">
+    <img id="popupImage" src="" alt="Store Image">
+    <div class="ticket-box" id="popupText"></div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const popup = document.getElementById("discountPopup");
+        const popupImage = document.getElementById("popupImage");
+        const popupText = document.getElementById("popupText");
+        const sliderTrack = document.querySelector('.slider-track');
+
+        const trackItems = [...sliderTrack.children];
+        trackItems.forEach(item => sliderTrack.appendChild(item.cloneNode(true)));
+
+        function bindPopupEvents(items) {
+            items.forEach(item => {
+                item.addEventListener("mouseenter", () => {
+                    const text = item.getAttribute("data-text");
+                    const popupImg = item.getAttribute("data-popup-image"); // ← الصورة الجديدة
+                    const img = popupImg || item.getAttribute("data-image") || item.querySelector("img").getAttribute("src");
+
+                    popupText.style.display = "none";
+                    popupImage.style.display = "none";
+
+                    if (text) {
+                        popupText.textContent = text;
+                        popupText.style.display = "block";
+                    }
+
+                    if (img) {
+                        popupImage.setAttribute("src", img);
+                        popupImage.style.display = "block";
+                    }
+
+                    popup.classList.add("active");
+                });
+
+                item.addEventListener("mouseleave", () => {
+                    popup.classList.remove("active");
+                });
+            });
+        }
+
+        bindPopupEvents([...sliderTrack.children]);
+
+        const sliderItemWidth = trackItems[0].offsetWidth + 10;
+        const totalItems = trackItems.length;
+        let offset = 0;
+
+        function animateLoop() {
+            offset += 0.15;
+            if (offset >= totalItems * sliderItemWidth / 2) offset = 0;
+            sliderTrack.style.transform = `translateX(-${offset}px)`;
+            requestAnimationFrame(animateLoop);
+        }
+        animateLoop();
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const popup = document.getElementById('discount-popup');
+        const sliderItems = document.querySelectorAll('.slider-item');
+
+        sliderItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const text = item.dataset.text;
+                if (text) {
+
+                    const rect = item.getBoundingClientRect();
+                    const iconX = rect.left + rect.width / 2;
+                    const iconY = rect.top + rect.height / 2;
+
+                }
+            });
+
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const popup = document.getElementById('discount-popup');
+        const sliderTrack = document.querySelector('.slider-track');
+        const items = document.querySelectorAll('.slider-item');
+
+        items.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const text = item.dataset.text;
+                if (text) {
+                    popup.textContent = text;
+
+                    popup.style.top = '50%';
+                    popup.style.left = '50%';
+                    popup.style.transform = 'translate(-50%, -50%)';
+                    popup.style.display = 'block';
+                    popup.style.opacity = 1;
+                    popup.style.pointerEvents = 'auto';
+                }
+            });
+
+            item.addEventListener('mouseleave', () => {
+                popup.style.opacity = 0;
+                popup.style.pointerEvents = 'none';
+                setTimeout(() => { popup.style.display = 'none'; }, 300);
+            });
+        });
+
+        const track = document.querySelector('.team-track');
+        const prevBtn = document.getElementById('prevTeam');
+        const nextBtn = document.getElementById('nextTeam');
+
+        const singleItem = track.querySelector('.team-member');
+        const itemWidth = singleItem.offsetWidth + 10;
+
+        const itemsPerScroll = 3;
+        const scrollAmount = itemWidth * itemsPerScroll;
+
+        prevBtn.addEventListener('click', () => {
+            track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+
+        nextBtn.addEventListener('click', () => {
+            track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+
+        const trackItems = [...sliderTrack.children];
+        const sliderItemWidth = trackItems[0].offsetWidth + 10;
+        const totalItems = trackItems.length;
+
+        trackItems.forEach(item => sliderTrack.appendChild(item.cloneNode(true)));
+
+        let offset = 0;
+        function animateLoop() {
+            offset += 0.15;
+            if (offset >= totalItems * sliderItemWidth / 2) offset = 0;
+            sliderTrack.style.transform = `translateX(-${offset}px)`;
+            requestAnimationFrame(animateLoop);
+        }
+        animateLoop();
+    });
+
+</script>
+
+<footer id="site-footer"></footer>
+<script src="assets/js/footer.js"></script>
 </body>
 </html>
