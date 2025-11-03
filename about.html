@@ -8,198 +8,245 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-	<header id="site-header"></header>
-    <script src="assets/js/header.js"></script>
+  <!-- Header Banner -->
+  <section class="header-banner">
+    <div class="banner-content">
+      <h1>About</h1>
+      <p>Learn more about who we are and what we do</p>
+    </div>
+  </section>
 
   <div class="container">
-    <!-- Hero Section -->
-    <section class="hero fade-in">
-      
-      <h1>About Us</h1>
-      <p>
+    <!-- Video Section (Replaces Hero Section) -->
+
+<section class="video-section fade-in">
+  <div class="video-container">
+    <div class="video-content">
+      <h1>Our Story</h1>
+      <p class="video-intro">
         The Arab Innovation Network (AIN) is a non-profit youth organization that aims to empower Arab youth to innovate
         and contribute to finding solutions to the challenges facing our Arab societies.
       </p>
-    </section>
-
-
+    </div>
+    <div class="video-player">
+      <video controls poster="image/video-poster.jpg">
+        <source src="video/ain-story.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="video-overlay">
+        <div class="play-button">
+          <i class="fas fa-play"></i>
+        </div>
+      </div>
+      <!-- أضف هذا الجزء - عناصر التحكم -->
+      <div class="video-controls">
+        <button class="control-btn play-pause-btn">
+          <i class="fas fa-play"></i>
+        </button>
+        <div class="progress-bar">
+          <div class="progress"></div>
+        </div>
+        <button class="control-btn volume-btn">
+          <i class="fas fa-volume-up"></i>
+        </button>
+        <button class="control-btn fullscreen-btn">
+          <i class="fas fa-expand"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- Eye on Talents -->
     <section class="gallery">
-      <h2 class="fade-in">Eye on Talents</h2>
+      <h2 class="fade-in">Eye on Achievements</h2>
       <div class="gallery-grid">
-        <div class="gallery-item fade-in delay-1">
-          <img src="image/EOY.jpg" alt="Eye on Yourself" class="gallery-image">
+        <div class="gallery-item fade-in delay-1" onclick="scrollToTop()">
+          <img src="image/EOY.jpg" alt="Camp" class="gallery-image">
           <div class="gallery-content">
-            <h3>Eye on Yourself</h3>
-            <p>A self-development program focusing on personal growth and skill enhancement through workshops and mentoring.</p>
+            <h3>Camp</h3>
+            <p class="arabic-text">عينك على ذاتك</p>
           </div>
         </div>
-        <div class="gallery-item fade-in delay-2">
+        <div class="gallery-item fade-in delay-2" onclick="scrollToTop()">
           <img src="image/Exhibition.jpg" alt="Exhibition" class="gallery-image">
           <div class="gallery-content">
             <h3>Exhibition</h3>
-            <p>Showcasing innovative projects and creative works by talented youth from across the Arab world.</p>
+            <p class="arabic-text">عينٌ على المستقبل</p>
           </div>
         </div>
-        <div class="gallery-item fade-in delay-3">
+        <div class="gallery-item fade-in delay-3" onclick="scrollToTop()">
           <img src="image/Hackathon.jpg" alt="Innovators Hackathon" class="gallery-image">
           <div class="gallery-content">
-            <h3>Innovators Hackathon</h3>
-            <p>A competitive event to develop innovative solutions to real-world challenges in a limited time frame.</p>
+            <h3>Hackathon</h3>
+            <p class="arabic-text">هاكاثون</p>
           </div>
         </div>
       </div>
     </section>
 
-
     <!-- Team -->
     <section class="team fade-in">
-      <h2>Identity Team</h2>
+      <div class="section-header">
+        <h2>Leadership Team</h2>
+        <p class="section-subtitle">Meet the leadership team driving innovation and growth</p>
+      </div>
       <div class="team-container">
         <button class="nav-btn prev-btn">&#10094;</button>
         <div class="team-carousel">
           <!-- Team Members -->
-          <div class="team-member">
+          <div class="team-member" data-member="0">
             <div class="card-inner">
               <div class="card-front">
-                <img src="" alt="Mohammad Swilem">
+                <div class="image-container">
+                  <img src="" alt="Mohammad Swilem">
+                </div>
                 <h4>Mohammad Swilem</h4>
                 <p>President</p>
-                <div class="hover-hint">Hover for details</div>
-              </div>
-              <div class="card-back">
-                <h4>Mohammad Swilem</h4>
-                <p class="role">President</p>
-                <p class="bio">Leading the organization with strategic vision and innovation-driven leadership.</p>
-                <div class="contact">
-                  <span>m.swilem@ain.org</span>
-                </div>
-                <div class="social-links">
-                  <a href="#"><i class="fab fa-linkedin"></i></a>
-                  <a href="#"><i class="fab fa-twitter"></i></a>
-                  <a href="#"><i class="fas fa-envelope"></i></a>
-                </div>
+                <div class="hover-hint">Click for details</div>
               </div>
             </div>
           </div>
           
-          <div class="team-member">
+          <div class="team-member" data-member="1">
             <div class="card-inner">
               <div class="card-front">
-                <img src="" alt="Mohammad Daraghmeh">
+                <div class="image-container">
+                  <img src="" alt="Mohammad Daraghmeh">
+                </div>
                 <h4>Mohammad Daraghmeh</h4>
                 <p>Vice President</p>
-                <div class="hover-hint">Hover for details</div>
-              </div>
-              <div class="card-back">
-                <h4>Mohammad Daraghmeh</h4>
-                <p class="role">Vice President</p>
-                <p class="bio">Supporting the president in strategic planning and organizational development.</p>
-                <div class="contact">
-                  <span>m.daraghmeh@ain.org</span>
-                </div>
-                <div class="social-links">
-                  <a href="#"><i class="fab fa-linkedin"></i></a>
-                  <a href="#"><i class="fab fa-twitter"></i></a>
-                  <a href="#"><i class="fas fa-envelope"></i></a>
-                </div>
+                <div class="hover-hint">Click for details</div>
               </div>
             </div>
           </div>
           
-          <div class="team-member">
+          <div class="team-member" data-member="2">
             <div class="card-inner">
               <div class="card-front">
-                <img src="" alt="Sadeel Abu Helweh">
-                <h4>Sadeel Abu Helweh</h4>
+                <div class="image-container">
+                  <img src="" alt="Sadeel Daraghmeh">
+                </div>
+                <h4>Sadeel Daraghmeh</h4>
                 <p>PR & Outreach</p>
-                <div class="hover-hint">Hover for details</div>
-              </div>
-              <div class="card-back">
-                <h4>Sadeel Abu Helweh</h4>
-                <p class="role">PR & Outreach</p>
-                <p class="bio">Building relationships with partners and expanding our network reach.</p>
-                <div class="contact">
-                  <span>s.abuhelweh@ain.org</span>
-                </div>
-                <div class="social-links">
-                  <a href="#"><i class="fab fa-linkedin"></i></a>
-                  <a href="#"><i class="fab fa-twitter"></i></a>
-                  <a href="#"><i class="fas fa-envelope"></i></a>
-                </div>
+                <div class="hover-hint">Click for details</div>
               </div>
             </div>
           </div>
           
-          <div class="team-member">
+          <div class="team-member" data-member="3">
             <div class="card-inner">
               <div class="card-front">
-                <img src="" alt="Ghaida Saify">
+                <div class="image-container">
+                  <img src="" alt="Ghaida Saify">
+                </div>
                 <h4>Ghaida Saify</h4>
                 <p>Technical Solutions Chair</p>
-                <div class="hover-hint">Hover for details</div>
-              </div>
-              <div class="card-back">
-                <h4>Ghaida Saify</h4>
-                <p class="role">Technical Solutions Chair</p>
-                <p class="bio">Leading technical initiatives and innovative solution development.</p>
-                <div class="contact">
-                  <span>g.saify@ain.org</span>
-                </div>
-                <div class="social-links">
-                  <a href="#"><i class="fab fa-linkedin"></i></a>
-                  <a href="#"><i class="fab fa-twitter"></i></a>
-                  <a href="#"><i class="fas fa-envelope"></i></a>
-                </div>
+                <div class="hover-hint">Click for details</div>
               </div>
             </div>
           </div>
           
-          <div class="team-member">
+          <div class="team-member" data-member="4">
             <div class="card-inner">
               <div class="card-front">
-                <img src="" alt="Tala Alhindi">
-                <h4>Tala Alhindi</h4>
-                <p>Technical Solutions Chair 2</p>
-                <div class="hover-hint">Hover for details</div>
-              </div>
-              <div class="card-back">
-                <h4>Tala Alhindi</h4>
-                <p class="role">Technical Solutions Chair 2</p>
-                <p class="bio">Co-leading technical projects and innovation workshops.</p>
-                <div class="contact">
-                  <span>t.alhindi@ain.org</span>
+                <div class="image-container">
+                  <img src="" alt="Tala Alhendi">
                 </div>
-                <div class="social-links">
-                  <a href="#"><i class="fab fa-linkedin"></i></a>
-                  <a href="#"><i class="fab fa-twitter"></i></a>
-                  <a href="#"><i class="fas fa-envelope"></i></a>
-                </div>
+                <h4>Tala Alhendi</h4>
+                <p>Technical Solutions Chair</p>
+                <div class="hover-hint">Click for details</div>
               </div>
             </div>
           </div>
           
-          <div class="team-member">
+          <div class="team-member" data-member="5">
             <div class="card-inner">
               <div class="card-front">
-                <img src="" alt="Hamza Abdulsalam">
+                <div class="image-container">
+                  <img src="" alt="Hamza Abdulsalam">
+                </div>
                 <h4>Hamza Abdulsalam</h4>
                 <p>Membership Chair</p>
-                <div class="hover-hint">Hover for details</div>
+                <div class="hover-hint">Click for details</div>
               </div>
-              <div class="card-back">
-                <h4>Hamza Abdulsalam</h4>
-                <p class="role">Membership Chair</p>
-                <p class="bio">Managing member relations and growing our community of innovators.</p>
-                <div class="contact">
-                  <span>h.abdulsalam@ain.org</span>
+            </div>
+          </div>
+          
+          <div class="team-member" data-member="6">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="image-container">
+                  <img src="" alt="Mosab Haddad">
                 </div>
-                <div class="social-links">
-                  <a href="#"><i class="fab fa-linkedin"></i></a>
-                  <a href="#"><i class="fab fa-twitter"></i></a>
-                  <a href="#"><i class="fas fa-envelope"></i></a>
+                <h4>Mosab Haddad</h4>
+                <p>Activity Coordinator</p>
+                <div class="hover-hint">Click for details</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="team-member" data-member="7">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="image-container">
+                  <img src="" alt="Shadi Salous">
                 </div>
+                <h4>Shadi Salous</h4>
+                <p>Photographer</p>
+                <div class="hover-hint">Click for details</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="team-member" data-member="8">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="image-container">
+                  <img src="" alt="Teeba Qusai">
+                </div>
+                <h4>Teeba Qusai</h4>
+                <p>Designer</p>
+                <div class="hover-hint">Click for details</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="team-member" data-member="9">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="image-container">
+                  <img src="" alt="Meera Sorady">
+                </div>
+                <h4>Meera Sorady</h4>
+                <p>Designer</p>
+                <div class="hover-hint">Click for details</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="team-member" data-member="10">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="image-container">
+                  <img src="" alt="Najwa Khazendar">
+                </div>
+                <h4>Najwa Khazendar</h4>
+                <p>Treasurer</p>
+                <div class="hover-hint">Click for details</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="team-member" data-member="11">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="image-container">
+                  <img src="" alt="Asmaa Abd Alhadi">
+                </div>
+                <h4>Asmaa Abd Alhadi</h4>
+                <p>Media Chair</p>
+                <div class="hover-hint">Click for details</div>
               </div>
             </div>
           </div>
@@ -207,126 +254,161 @@
         <button class="nav-btn next-btn">&#10095;</button>
       </div>
     </section>
+
     <!-- Website Development Team -->
-<section class="dev-team fade-in">
-  <h2>Website Development Team</h2>
-  <div class="dev-team-container">
-    <button class="nav-btn dev-prev-btn">&#10094;</button>
-    <div class="dev-team-carousel">
-      <!-- Developer 1 -->
-      <div class="dev-member">
-        <div class="dev-card">
-          <div class="dev-card-front">
-            <img src="" alt="Developer Name">
-            <h4>Dana Zaben</h4>
-            <div class="dev-social-links">
-              <a href="#"><i class="fab fa-linkedin"></i></a>
-              <a href="#"><i class="fab fa-github"></i></a>
-              <a href="#"><i class="fab fa-facebook"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
+    <section class="dev-team fade-in">
+      <div class="section-header">
+        <h2>Website Development Team</h2>
+        <p class="section-subtitle">The talented developers behind this platform</p>
+      </div>
+      <div class="dev-team-container">
+        <button class="nav-btn dev-prev-btn">&#10094;</button>
+        <div class="dev-team-carousel">
+          <!-- Developer 1 -->
+          <div class="dev-member">
+            <div class="dev-card">
+              <div class="dev-card-front">
+                <div class="image-container">
+                  <img src="" alt="Dana Zaben">
+                </div>
+                <h4>Dana Zaben</h4>
+                <div class="dev-social-links">
+                  <a href="https://www.linkedin.com/in/dana-zaben-3b5489284"><i class="fab fa-linkedin"></i></a>
+                  <a href="https://github.com/Dana-rami"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Developer 2 -->
+          <div class="dev-member">
+            <div class="dev-card">
+              <div class="dev-card-front">
+                <div class="image-container">
+                  <img src="" alt="Sadeel Daraghmeh">
+                </div>
+                <h4>Sadeel Daraghmeh</h4>
+                <div class="dev-social-links">
+                  <a href="https://www.linkedin.com/in/sadeel-abuhelweh-152788307?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class="fab fa-linkedin"></i></a>
+                  <a href="#"><i class="fab fa-github"></i></a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Developer 3 -->
+          <div class="dev-member">
+            <div class="dev-card">
+              <div class="dev-card-front">
+                <div class="image-container">
+                  <img src="" alt="Andreh Khouri">
+                </div>
+                <h4>Andreh Khouri</h4>
+                <div class="dev-social-links">
+                  <a href="https://www.linkedin.com/in/andreh-khouri-375965351?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class="fab fa-linkedin"></i></a>
+                  <a href="https://github.com/andrehkhouri333"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Developer 4 -->
+         <div class="dev-member">
+            <div class="dev-card">
+              <div class="dev-card-front">
+                <div class="image-container">
+                  <img src="" alt="Tala Alhendi">
+                </div>
+                <h4>Tala Alhendi</h4>
+                <div class="dev-social-links">
+                  <a href="https://www.linkedin.com/in/tala-alhendi?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class="fab fa-linkedin"></i></a>
+                  <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Developer 5 -->
+          <div class="dev-member">
+            <div class="dev-card">
+              <div class="dev-card-front">
+                <div class="image-container">
+                  <img src="" alt="Ghaida Saify">
+                </div>
+                <h4>Ghaida Saify</h4>
+                <div class="dev-social-links">
+                  <a href="https://www.linkedin.com/in/ghayda-saify?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class="fab fa-linkedin"></i></a>
+                  <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Developer 6 -->
+          <div class="dev-member">
+            <div class="dev-card">
+              <div class="dev-card-front">
+                <div class="image-container">
+                  <img src="" alt="Jana Abuturabi">
+                </div>
+                <h4>Jana Abuturabi</h4>
+                <div class="dev-social-links">
+                  <a href="https://www.linkedin.com/in/jana-abuturabi-026a94338/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class="fab fa-linkedin"></i></a>
+                  <a href="https://github.com/janaabuturabi4"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Developer 7 -->
+          <div class="dev-member">
+            <div class="dev-card">
+              <div class="dev-card-front">
+                <div class="image-container">
+                  <img src="" alt="Hamza Abdulsalam">
+                </div>
+                <h4>Hamza Abdulsalam</h4>
+                <div class="dev-social-links">
+                  <a href="https://www.linkedin.com/in/hamza-abdulsalamm"><i class="fab fa-linkedin"></i></a>
+                  <a href="https://github.com/HamzaAbdulSalam"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <button class="nav-btn dev-next-btn">&#10095;</button>
       </div>
-      
-      <!-- Developer 2 -->
-      <div class="dev-member">
-        <div class="dev-card">
-          <div class="dev-card-front">
-            <img src="" alt="Developer Name">
-            <h4>Sadeel Abuhelweh</h4>
-            <div class="dev-social-links">
-              <a href="#"><i class="fab fa-linkedin"></i></a>
-              <a href="#"><i class="fab fa-github"></i></a>
-              <a href="#"><i class="fab fa-facebook"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
+    </section>
+  </div>
+
+  <!-- Modal for Team Member Details -->
+  <div class="modal" id="teamModal">
+    <div class="modal-content">
+      <button class="close-btn">&times;</button>
+      <div class="modal-header">
+        <div class="modal-image-container">
+          <img src="" alt="" id="modalImage">
+        </div>
+        <div class="modal-info">
+          <h3 id="modalName"></h3>
+          <p class="role" id="modalRole"></p>
+          <div class="modal-contact">
+            <span id="modalEmail"></span>
           </div>
         </div>
       </div>
-      
-      <!-- Developer 3 -->
-      <div class="dev-member">
-        <div class="dev-card">
-          <div class="dev-card-front">
-            <img src="" alt="Developer Name">
-            <h4>Andreh Khouri</h4>
-            <div class="dev-social-links">
-              <a href="#"><i class="fab fa-linkedin"></i></a>
-              <a href="#"><i class="fab fa-github"></i></a>
-              <a href="#"><i class="fab fa-facebook"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
+<div class="modal-body">
+    <div class="bio-section">
+        <h4>About</h4>
+        <div class="bio-content" id="modalBio">
+            <!-- سيتم إضافة المحتوى هنا عبر JavaScript -->
         </div>
-      </div>
-      
-      <!-- Developer 4 -->
-      <div class="dev-member">
-        <div class="dev-card">
-          <div class="dev-card-front">
-            <img src="" alt="Developer Name">
-            <h4>Hamza Abdulsalam</h4>
-            <div class="dev-social-links">
-              <a href="#"><i class="fab fa-linkedin"></i></a>
-              <a href="#"><i class="fab fa-github"></i></a>
-              <a href="#"><i class="fab fa-facebook"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Developer 5 -->
-      <div class="dev-member">
-        <div class="dev-card">
-          <div class="dev-card-front">
-            <img src="" alt="Developer Name">
-            <h4>Ghaydaa Saify</h4>
-            <div class="dev-social-links">
-              <a href="#"><i class="fab fa-linkedin"></i></a>
-              <a href="#"><i class="fab fa-github"></i></a>
-              <a href="#"><i class="fab fa-facebook"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-            <!-- Developer 6 -->
-      <div class="dev-member">
-        <div class="dev-card">
-          <div class="dev-card-front">
-            <img src="" alt="Developer Name">
-            <h4>Jana Abuturabi</h4>
-            <div class="dev-social-links">
-              <a href="#"><i class="fab fa-linkedin"></i></a>
-              <a href="#"><i class="fab fa-github"></i></a>
-              <a href="#"><i class="fab fa-facebook"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-            <!-- Developer 7 -->
-      <div class="dev-member">
-        <div class="dev-card">
-          <div class="dev-card-front">
-            <img src="" alt="Developer Name">
-            <h4>Tala Alhindi</h4>
-            <div class="dev-social-links">
-              <a href="#"><i class="fab fa-linkedin"></i></a>
-              <a href="#"><i class="fab fa-github"></i></a>
-              <a href="#"><i class="fab fa-facebook"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-    <button class="nav-btn dev-next-btn">&#10095;</button>
+</div>
+    </div>
   </div>
-</section>
-  </div>
+
   <script src="about.js"></script>
   <footer id="site-footer"></footer>
   <script src="assets/js/footer.js"></script>
