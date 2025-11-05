@@ -1,17 +1,22 @@
 .site-header 
 { 
-  position: sticky;
+  position: fixed;
    top: 0; 
+   left: 0;
+   right: 0;
+   width: 100%;
    z-index: 1000;
     background: #ffffff;
  box-shadow: 0 1px 8px rgba(0,0,0,0.06);
  }
 .site-header .container { max-width: 1200px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; }
-.logo img { height: 70px; width: 100حء; display: block; }
+.logo img { height: 70px; width: auto; display: block; }
 
 .nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 28px; align-items: center; }
-.nav a { text-decoration: none; color: #1a1a1a; font-weight: 600; letter-spacing: .2px; }
-.nav a:hover, .nav a:focus { color: #0077ff; }
+.nav a { text-decoration: none; color: #1a1a1a; font-weight: 600; letter-spacing: .2px; position: relative; }
+.nav a:hover, .nav a:focus { color: #31b2cc; }
+.nav a.current-page { color: #31b2cc; }
+.nav a.current-page::after { content: ''; position: absolute; bottom: -5px; left: 0; right: 0; height: 2px; background: #31b2cc; }
 
 .nav-toggle { display: none; background: transparent; border: 0; padding: 8px; cursor: pointer; }
 .nav-toggle .bar { display: block; width: 22px; height: 2px; background: #1a1a1a; margin: 5px 0; transition: transform .2s ease; }

@@ -9,10 +9,10 @@
     var logo = fragment.querySelector('.logo img');
     if (logo){
       var src = logo.getAttribute('src') || '';
-      if (src.indexOf('../assets/images/') === 0) {
-        logo.setAttribute('src', src.replace('../',''));
-      } else if (src.indexOf('assets/images/') !== 0) {
-        logo.setAttribute('src','assets/images/AINLogo-2.png');
+      if (src.indexOf('../components/') === 0) {
+        logo.setAttribute('src', 'components/AINLogo-2.png');
+      } else if (src.indexOf('components/') !== 0 && src.indexOf('assets/') !== 0 && src.indexOf('/') !== 0) {
+        logo.setAttribute('src','components/AINLogo-2.png');
       }
     }
   }

@@ -8,10 +8,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+  <!-- Header -->
+  <header id="site-header"></header>
+  <script src="assets/js/header.js"></script>
+  
   <!-- Header Banner -->
   <section class="header-banner">
     <div class="banner-content">
-      <h1>About</h1>
+      <h1>About Us</h1>
       <p>Learn more about who we are and what we do</p>
     </div>
   </section>
@@ -61,22 +65,22 @@
     <section class="gallery">
       <h2 class="fade-in">Eye on Achievements</h2>
       <div class="gallery-grid">
-        <div class="gallery-item fade-in delay-1" onclick="scrollToTop()">
-          <img src="image/EOY.jpg" alt="Camp" class="gallery-image">
+        <div class="gallery-item fade-in delay-1" onclick="window.location.href='events.html?event=camp'">
+          <img src="images/image-about/EOY.jpg" alt="Camp" class="gallery-image">
           <div class="gallery-content">
             <h3>Camp</h3>
             <p class="arabic-text">عينك على ذاتك</p>
           </div>
         </div>
-        <div class="gallery-item fade-in delay-2" onclick="scrollToTop()">
-          <img src="image/Exhibition.jpg" alt="Exhibition" class="gallery-image">
+        <div class="gallery-item fade-in delay-2" onclick="window.location.href='events.html?event=exhibition'">
+          <img src="images/image-about/Exhibition.jpg" alt="Exhibition" class="gallery-image">
           <div class="gallery-content">
             <h3>Exhibition</h3>
             <p class="arabic-text">عينٌ على المستقبل</p>
           </div>
         </div>
-        <div class="gallery-item fade-in delay-3" onclick="scrollToTop()">
-          <img src="image/Hackathon.jpg" alt="Innovators Hackathon" class="gallery-image">
+        <div class="gallery-item fade-in delay-3" onclick="window.location.href='events.html?event=hackathon'">
+          <img src="images/image-about/Hackathon.jpg" alt="Innovators Hackathon" class="gallery-image">
           <div class="gallery-content">
             <h3>Hackathon</h3>
             <p class="arabic-text">هاكاثون</p>
@@ -95,7 +99,7 @@
         <button class="nav-btn prev-btn">&#10094;</button>
         <div class="team-carousel">
           <!-- Team Members -->
-          <div class="team-member" data-member="0">
+          <div class="team-member" id="member-0" data-member="0">
             <div class="card-inner">
               <div class="card-front">
                 <div class="image-container">
@@ -108,7 +112,7 @@
             </div>
           </div>
           
-          <div class="team-member" data-member="1">
+          <div class="team-member" id="member-1" data-member="1">
             <div class="card-inner">
               <div class="card-front">
                 <div class="image-container">
@@ -121,59 +125,7 @@
             </div>
           </div>
           
-          <div class="team-member" data-member="2">
-            <div class="card-inner">
-              <div class="card-front">
-                <div class="image-container">
-                  <img src="" alt="Sadeel Daraghmeh">
-                </div>
-                <h4>Sadeel Daraghmeh</h4>
-                <p>PR & Outreach</p>
-                <div class="hover-hint">Click for details</div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="team-member" data-member="3">
-            <div class="card-inner">
-              <div class="card-front">
-                <div class="image-container">
-                  <img src="" alt="Ghaida Saify">
-                </div>
-                <h4>Ghaida Saify</h4>
-                <p>Technical Solutions Chair</p>
-                <div class="hover-hint">Click for details</div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="team-member" data-member="4">
-            <div class="card-inner">
-              <div class="card-front">
-                <div class="image-container">
-                  <img src="" alt="Tala Alhendi">
-                </div>
-                <h4>Tala Alhendi</h4>
-                <p>Technical Solutions Chair</p>
-                <div class="hover-hint">Click for details</div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="team-member" data-member="5">
-            <div class="card-inner">
-              <div class="card-front">
-                <div class="image-container">
-                  <img src="" alt="Hamza Abdulsalam">
-                </div>
-                <h4>Hamza Abdulsalam</h4>
-                <p>Membership Chair</p>
-                <div class="hover-hint">Click for details</div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="team-member" data-member="6">
+          <div class="team-member" id="member-2" data-member="2">
             <div class="card-inner">
               <div class="card-front">
                 <div class="image-container">
@@ -185,47 +137,8 @@
               </div>
             </div>
           </div>
-
-          <div class="team-member" data-member="7">
-            <div class="card-inner">
-              <div class="card-front">
-                <div class="image-container">
-                  <img src="" alt="Shadi Salous">
-                </div>
-                <h4>Shadi Salous</h4>
-                <p>Photographer</p>
-                <div class="hover-hint">Click for details</div>
-              </div>
-            </div>
-          </div>
           
-          <div class="team-member" data-member="8">
-            <div class="card-inner">
-              <div class="card-front">
-                <div class="image-container">
-                  <img src="" alt="Teeba Qusai">
-                </div>
-                <h4>Teeba Qusai</h4>
-                <p>Designer</p>
-                <div class="hover-hint">Click for details</div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="team-member" data-member="9">
-            <div class="card-inner">
-              <div class="card-front">
-                <div class="image-container">
-                  <img src="" alt="Meera Sorady">
-                </div>
-                <h4>Meera Sorady</h4>
-                <p>Designer</p>
-                <div class="hover-hint">Click for details</div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="team-member" data-member="10">
+          <div class="team-member" id="member-3" data-member="3">
             <div class="card-inner">
               <div class="card-front">
                 <div class="image-container">
@@ -238,7 +151,20 @@
             </div>
           </div>
           
-          <div class="team-member" data-member="11">
+          <div class="team-member" id="member-4" data-member="4">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="image-container">
+                  <img src="" alt="Sadeel Daraghmeh">
+                </div>
+                <h4>Sadeel Daraghmeh</h4>
+                <p>PR & Outreach</p>
+                <div class="hover-hint">Click for details</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="team-member" id="member-5" data-member="5">
             <div class="card-inner">
               <div class="card-front">
                 <div class="image-container">
@@ -246,6 +172,84 @@
                 </div>
                 <h4>Asmaa Abd Alhadi</h4>
                 <p>Media Chair</p>
+                <div class="hover-hint">Click for details</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="team-member" id="member-6" data-member="6">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="image-container">
+                  <img src="" alt="Tala Alhendi">
+                </div>
+                <h4>Tala Alhendi</h4>
+                <p>Technical Solutions Chair</p>
+                <div class="hover-hint">Click for details</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="team-member" id="member-7" data-member="7">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="image-container">
+                  <img src="" alt="Ghaida Saify">
+                </div>
+                <h4>Ghaida Saify</h4>
+                <p>Technical Solutions Chair</p>
+                <div class="hover-hint">Click for details</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="team-member" id="member-8" data-member="8">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="image-container">
+                  <img src="" alt="Hamza Abdulsalam">
+                </div>
+                <h4>Hamza Abdulsalam</h4>
+                <p>Membership Chair</p>
+                <div class="hover-hint">Click for details</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="team-member" id="member-9" data-member="9">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="image-container">
+                  <img src="" alt="Shadi Salous">
+                </div>
+                <h4>Shadi Salous</h4>
+                <p>Photographer</p>
+                <div class="hover-hint">Click for details</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="team-member" id="member-10" data-member="10">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="image-container">
+                  <img src="" alt="Meera Sorady">
+                </div>
+                <h4>Meera Sorady</h4>
+                <p>Video Editor</p>
+                <div class="hover-hint">Click for details</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="team-member" id="member-11" data-member="11">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="image-container">
+                  <img src="" alt="Teeba Qusai">
+                </div>
+                <h4>Teeba Qusai</h4>
+                <p>Designer</p>
                 <div class="hover-hint">Click for details</div>
               </div>
             </div>
@@ -264,56 +268,7 @@
       <div class="dev-team-container">
         <button class="nav-btn dev-prev-btn">&#10094;</button>
         <div class="dev-team-carousel">
-          <!-- Developer 1 -->
-          <div class="dev-member">
-            <div class="dev-card">
-              <div class="dev-card-front">
-                <div class="image-container">
-                  <img src="" alt="Dana Zaben">
-                </div>
-                <h4>Dana Zaben</h4>
-                <div class="dev-social-links">
-                  <a href="https://www.linkedin.com/in/dana-zaben-3b5489284"><i class="fab fa-linkedin"></i></a>
-                  <a href="https://github.com/Dana-rami"><i class="fab fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Developer 2 -->
-          <div class="dev-member">
-            <div class="dev-card">
-              <div class="dev-card-front">
-                <div class="image-container">
-                  <img src="" alt="Sadeel Daraghmeh">
-                </div>
-                <h4>Sadeel Daraghmeh</h4>
-                <div class="dev-social-links">
-                  <a href="https://www.linkedin.com/in/sadeel-abuhelweh-152788307?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class="fab fa-linkedin"></i></a>
-                  <a href="#"><i class="fab fa-github"></i></a>
-
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Developer 3 -->
-          <div class="dev-member">
-            <div class="dev-card">
-              <div class="dev-card-front">
-                <div class="image-container">
-                  <img src="" alt="Andreh Khouri">
-                </div>
-                <h4>Andreh Khouri</h4>
-                <div class="dev-social-links">
-                  <a href="https://www.linkedin.com/in/andreh-khouri-375965351?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class="fab fa-linkedin"></i></a>
-                  <a href="https://github.com/andrehkhouri333"><i class="fab fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Developer 4 -->
+          <!-- Developer 1 - Tala -->
          <div class="dev-member">
             <div class="dev-card">
               <div class="dev-card-front">
@@ -329,7 +284,7 @@
             </div>
           </div>
           
-          <!-- Developer 5 -->
+          <!-- Developer 2 - Ghaida -->
           <div class="dev-member">
             <div class="dev-card">
               <div class="dev-card-front">
@@ -345,23 +300,55 @@
             </div>
           </div>
           
-          <!-- Developer 6 -->
+          <!-- Developer 3 - Andreh -->
           <div class="dev-member">
             <div class="dev-card">
               <div class="dev-card-front">
                 <div class="image-container">
-                  <img src="" alt="Jana Abuturabi">
+                  <img src="" alt="Andreh Khouri">
                 </div>
-                <h4>Jana Abuturabi</h4>
+                <h4>Andreh Khouri</h4>
                 <div class="dev-social-links">
-                  <a href="https://www.linkedin.com/in/jana-abuturabi-026a94338/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class="fab fa-linkedin"></i></a>
-                  <a href="https://github.com/janaabuturabi4"><i class="fab fa-github"></i></a>
+                  <a href="https://www.linkedin.com/in/andreh-khouri-375965351?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class="fab fa-linkedin"></i></a>
+                  <a href="https://github.com/andrehkhouri333"><i class="fab fa-github"></i></a>
                 </div>
               </div>
             </div>
           </div>
           
-          <!-- Developer 7 -->
+          <!-- Developer 4 - Dana Zaben -->
+          <div class="dev-member">
+            <div class="dev-card">
+              <div class="dev-card-front">
+                <div class="image-container">
+                  <img src="" alt="Dana Zaben">
+                </div>
+                <h4>Dana Zaben</h4>
+                <div class="dev-social-links">
+                  <a href="https://www.linkedin.com/in/dana-zaben-3b5489284"><i class="fab fa-linkedin"></i></a>
+                  <a href="https://github.com/Dana-rami"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Developer 5 - Sadeel -->
+          <div class="dev-member">
+            <div class="dev-card">
+              <div class="dev-card-front">
+                <div class="image-container">
+                  <img src="" alt="Sadeel Daraghmeh">
+                </div>
+                <h4>Sadeel Daraghmeh</h4>
+                <div class="dev-social-links">
+                  <a href="https://www.linkedin.com/in/sadeel-abuhelweh-152788307?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class="fab fa-linkedin"></i></a>
+                  <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Developer 6 - Hamza -->
           <div class="dev-member">
             <div class="dev-card">
               <div class="dev-card-front">

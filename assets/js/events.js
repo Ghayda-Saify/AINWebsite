@@ -84,6 +84,9 @@
     const modalFullDescription = modalBody.querySelector(
       ".modal-full-description"
     );
+    const modalExtraDetailDescription = modalBody.querySelector(
+      ".modal-extra-detail-description"
+    );
     const modalMetaDetails = modalBody.querySelector(".modal-meta-details");
     const modalBookBtn = modalBody.querySelector(".modal-cta .btn-book");
     const sliderPrevBtn = modalBody.querySelector(".slider-prev");
@@ -145,7 +148,10 @@
       card.addEventListener("click", () => {
         const title = card.querySelector(".title").textContent;
         const fullDescription = card.getAttribute("data-full-description");
+        const extraDetailDescription = card.getAttribute("data-extra-detail-description");
         const imagesString = card.getAttribute("data-images");
+        const eventType = card.getAttribute("data-event-type");
+        const eventName = card.getAttribute("data-name") || title.toLowerCase();
 
         const metaItemsToClone = Array.from(
           card.querySelectorAll(".meta-item")
@@ -158,7 +164,17 @@
         });
 
         modalTitle.textContent = title;
-        modalFullDescription.textContent = fullDescription;
+        
+        // Set extra detail description if available, otherwise show full description
+        if (extraDetailDescription && extraDetailDescription.trim()) {
+          modalFullDescription.style.display = "none";
+          modalExtraDetailDescription.textContent = extraDetailDescription;
+          modalExtraDetailDescription.style.display = "block";
+        } else {
+          modalFullDescription.textContent = fullDescription;
+          modalFullDescription.style.display = "block";
+          modalExtraDetailDescription.style.display = "none";
+        }
 
         currentImages = imagesString ? imagesString.split(",") : [];
         currentImageIndex = 0;
@@ -170,10 +186,38 @@
           modalMetaDetails.appendChild(clone);
         });
 
-        modalBookBtn.onclick = (e) => {
-          e.stopPropagation();
-          alert(`Booking for "${title}" feature coming soon!`);
-        };
+        // Show/hide Register button only for the 2 current upcoming events (Hackathon and Camp 4)
+        const hackathonKeywords = ["hackathon", "هاكاثون"];
+        const camp4Keywords = ["مخيم عينك على ذاتك 4", "camp"];
+        
+        const isHackathon = hackathonKeywords.some(keyword => 
+          eventName.toLowerCase().includes(keyword.toLowerCase()) || 
+          title.toLowerCase().includes(keyword.toLowerCase())
+        );
+        
+        const isCamp4 = eventName.includes("مخيم عينك على ذاتك 4") || 
+                       title.includes("مخيم عينك على ذاتك 4");
+        
+        if (isHackathon || isCamp4) {
+          modalBookBtn.style.display = "block";
+          
+          if (isHackathon) {
+            modalBookBtn.onclick = (e) => {
+              e.stopPropagation();
+              window.location.href = "hack.html";
+            };
+            modalBookBtn.textContent = "Register";
+          } else if (isCamp4) {
+            modalBookBtn.onclick = (e) => {
+              e.stopPropagation();
+              window.location.href = "aincamp.html";
+            };
+            modalBookBtn.textContent = "Register";
+          }
+        } else {
+          // Hide Register button for all other events
+          modalBookBtn.style.display = "none";
+        }
 
         modal.style.display = "block";
       });
@@ -297,4 +341,61 @@
       init();
     }
   })();
+
+  // Open modal for event when query parameter is present
+  function openEventModal() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const eventParam = urlParams.get('event');
+    
+    if (eventParam) {
+      // Map event names to IDs or data-name attributes
+      const eventMap = {
+        'camp': 'camp',
+        'exhibition': 'exhibition',
+        'hackathon': 'hackathon'
+      };
+      
+      const eventId = eventMap[eventParam];
+      if (eventId) {
+        // Find the card by ID or data-name
+        const targetCard = document.querySelector(`#${eventId}`) || 
+                          document.querySelector(`[data-name*="${eventId}" i]`);
+        
+        if (targetCard) {
+          setTimeout(() => {
+            // Trigger click on the card to open modal
+            targetCard.click();
+          }, 500);
+        }
+      }
+    }
+  }
+
+  // Smooth scroll to event when hash is present
+  function scrollToEvent() {
+    const hash = window.location.hash;
+    if (hash) {
+      const targetElement = document.querySelector(hash);
+      if (targetElement) {
+        setTimeout(() => {
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          // Add a highlight effect
+          targetElement.style.transition = 'box-shadow 0.3s ease';
+          targetElement.style.boxShadow = '0 0 20px rgba(49, 178, 204, 0.5)';
+          setTimeout(() => {
+            targetElement.style.boxShadow = '';
+          }, 2000);
+        }, 500);
+      }
+    }
+  }
+
+  // Run on page load
+  window.addEventListener('load', function() {
+    openEventModal();
+    scrollToEvent();
+  });
+  
+  // Also run if hash changes (e.g., when clicking links)
+  window.addEventListener('hashchange', scrollToEvent);
 })();

@@ -1,5 +1,5 @@
 :root {
-  --color-primary: linear-gradient(135deg, #19c9de, #02b6ed, #02cded);
+  --color-primary: linear-gradient(135deg, #31b2cc, #31b2cc, #31b2cc);
   --color-text: #232323;
   --color-bg: #ffffff;
   --color-muted: #6b6b6b;
@@ -16,6 +16,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  padding-top: 100px;
   background: var(
     --color-bg
   ); /* Default background, used for the rest of the page */
@@ -40,6 +41,7 @@ body {
   box-shadow: var(
     --shadow-md
   ); /* Optional: Adds a subtle shadow below the header */
+  margin-top: -100px;
   /* If your main site navigation is outside this file, ensure it's still visible
      For example, by setting a z-index for the nav that is higher than this section's elements. */
 }
@@ -53,9 +55,9 @@ body {
   z-index: 0; /* Puts the canvas behind the hero content */
   background: linear-gradient(
     135deg,
-    #19c9de,
-    #02b6ed,
-    #02cded
+    #31b2cc,
+    #31b2cc,
+    #31b2cc
   ); /* Your desired background gradient */
 }
 
@@ -110,7 +112,7 @@ body {
 }
 .search input[type="text"]:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 4px rgba(0, 165, 187, 0.12);
+  box-shadow: 0 0 0 4px rgba(49, 178, 204, 0.12);
 }
 .search-icon {
   position: absolute;
@@ -160,9 +162,9 @@ body {
   border-radius: 50%;
   background: radial-gradient(
     120px 120px at 30% 30%,
-    #19c9de 0%,
-    #00a5bb 45%,
-    #04879a 100%
+    #31b2cc 0%,
+    #31b2cc 45%,
+    #31b2cc 100%
   );
   display: grid;
   place-items: center;
@@ -170,7 +172,7 @@ body {
   font-size: 26px;
   font-weight: 800;
   letter-spacing: 1px;
-  box-shadow: 0 10px 25px rgba(0, 165, 187, 0.35);
+  box-shadow: 0 10px 25px rgba(49, 178, 204, 0.35);
   border: 4px solid #e6f9fb;
 }
 .brand-title {
@@ -275,7 +277,7 @@ body {
   margin: 0;
   font-size: 18px;
   font-weight: 800;
-  color: var(--color-text);
+  color: #31b2cc;
   min-width: 170px;
 }
 .summary {
@@ -394,6 +396,7 @@ body {
   margin-top: 0;
   margin-bottom: 15px;
   color: var(--color-text);
+  text-align: center;
 }
 
 .modal-image-slider {
@@ -473,16 +476,32 @@ body {
   line-height: 1.6;
 }
 
-.modal-meta-details.meta {
+.modal-extra-detail-description {
+  font-size: 1em;
+  color: var(--color-text);
   margin-top: 20px;
-  padding-top: 15px;
-  border-top: 1px solid #eee;
+  margin-bottom: 20px;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+.modal-meta-details.meta {
+  margin-top: 10px;
+  margin-bottom: 15px;
   display: grid;
   grid-template-columns: repeat(
     auto-fit,
     minmax(150px, 1fr)
   ); /* Responsive meta items */
   gap: 15px;
+  justify-items: center;
+}
+
+.modal-divider {
+  border: none;
+  border-top: 2px solid #000;
+  margin: 20px 0;
+  width: 100%;
 }
 
 .modal-cta {

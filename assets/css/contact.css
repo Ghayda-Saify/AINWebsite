@@ -10,9 +10,8 @@ body {
     color: #333333;
     min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+    flex-direction: column;
+    padding: 0;
     overflow-x: hidden;
 }
 
@@ -26,6 +25,8 @@ body {
     position: relative;
     padding: 40px;
     border: 1px solid rgba(0, 0, 0, 0.05);
+    margin: 20px auto;
+    flex: 1;
 }
 
 .background-elements {
@@ -108,7 +109,7 @@ body {
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background: linear-gradient(90deg, #3498db, #2ecc71);
+    background: linear-gradient(90deg, #31b2cc, #31b2cc);
     border-radius: 2px;
     animation: lineExpand 1.5s ease-out;
 }
@@ -163,7 +164,7 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(52, 152, 219, 0.05), transparent);
+    background: linear-gradient(90deg, transparent, rgba(49, 178, 204, 0.05), transparent);
     transition: left 0.5s;
 }
 
@@ -174,13 +175,13 @@ body {
 .info-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-    border-color: rgba(52, 152, 219, 0.2);
+    border-color: rgba(49, 178, 204, 0.2);
 }
 
 .icon-circle {
     width: 70px;
     height: 70px;
-    background: linear-gradient(135deg, #3498db, #2980b9);
+    background: linear-gradient(135deg, #31b2cc, #31b2cc);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -247,7 +248,7 @@ body {
 }
 
 .contact-form:hover {
-    border-color: rgba(52, 152, 219, 0.2);
+    border-color: rgba(49, 178, 204, 0.2);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
 }
 
@@ -332,9 +333,9 @@ body {
 
 .input-with-icon input:focus,
 .input-with-icon textarea:focus {
-    border-color: #3498db;
+    border-color: #31b2cc;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    box-shadow: 0 0 0 3px rgba(49, 178, 204, 0.1);
 }
 
 .input-with-icon input:focus + label,
@@ -343,13 +344,13 @@ body {
 .input-with-icon textarea:valid + label {
     top: 0;
     font-size: 0.8rem;
-    color: #3498db;
+    color: #31b2cc;
     font-weight: 500;
 }
 
 .input-with-icon input:focus ~ i,
 .input-with-icon textarea:focus ~ i {
-    color: #3498db;
+    color: #31b2cc;
     transform: translateY(-50%) scale(1.1);
 }
 
@@ -366,7 +367,7 @@ body {
 }
 
 .submit-btn {
-    background: linear-gradient(135deg, #3498db, #2980b9);
+    background: linear-gradient(135deg, #31b2cc, #31b2cc);
     color: white;
     border: none;
     padding: 15px 30px;
@@ -401,7 +402,7 @@ body {
 
 .submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+    box-shadow: 0 5px 15px rgba(49, 178, 204, 0.3);
 }
 
 .submit-btn:active {
@@ -487,7 +488,7 @@ body {
     transform: translateX(-50%);
     width: 60px;
     height: 3px;
-    background: linear-gradient(90deg, #3498db, #2ecc71);
+    background: linear-gradient(90deg, #31b2cc, #31b2cc);
     border-radius: 2px;
 }
 
@@ -534,7 +535,7 @@ body {
 }
 
 .map-info h3 i {
-    color: #3498db;
+    color: #31b2cc;
 }
 
 .map-info p {
@@ -544,7 +545,7 @@ body {
 }
 
 .directions-btn {
-    background: linear-gradient(135deg, #3498db, #2980b9);
+    background: linear-gradient(135deg, #31b2cc, #31b2cc);
     color: white;
     border: none;
     padding: 10px 15px;
@@ -563,7 +564,7 @@ body {
 
 .directions-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 10px rgba(52, 152, 219, 0.3);
+    box-shadow: 0 5px 10px rgba(49, 178, 204, 0.3);
 }
 
 .leaflet-container {
@@ -572,7 +573,7 @@ body {
 }
 
 .custom-marker {
-    background: linear-gradient(135deg, #3498db, #2980b9);
+    background: linear-gradient(135deg, #31b2cc, #31b2cc);
     border: 3px solid white;
     border-radius: 50%;
     width: 40px;
@@ -587,13 +588,13 @@ body {
 
 @keyframes pulse {
     0% {
-        box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7);
+        box-shadow: 0 0 0 0 rgba(49, 178, 204, 0.7);
     }
     70% {
-        box-shadow: 0 0 0 10px rgba(52, 152, 219, 0);
+        box-shadow: 0 0 0 10px rgba(49, 178, 204, 0);
     }
     100% {
-        box-shadow: 0 0 0 0 rgba(52, 152, 219, 0);
+        box-shadow: 0 0 0 0 rgba(49, 178, 204, 0);
     }
 }
 
@@ -627,7 +628,7 @@ body {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background: linear-gradient(135deg, #3498db, #2ecc71);
+    background: linear-gradient(135deg, #31b2cc, #31b2cc);
     opacity: 0;
     transition: opacity 0.3s;
 }
@@ -691,7 +692,7 @@ body {
 
 .verification-icon .fa-envelope {
     font-size: 3.5rem;
-    color: #3498db;
+    color: #31b2cc;
 }
 
 .verification-badge {
@@ -737,7 +738,7 @@ body {
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #3498db, #2ecc71);
+    background: linear-gradient(90deg, #31b2cc, #31b2cc);
     width: 0%;
     transition: width 0.5s ease;
     border-radius: 3px;
@@ -755,7 +756,7 @@ body {
 }
 
 .step.active {
-    color: #3498db;
+    color: #31b2cc;
     font-weight: 500;
 }
 
@@ -779,7 +780,7 @@ body {
 }
 
 .detail-item .checking {
-    color: #3498db;
+    color: #31b2cc;
 }
 
 .detail-item .waiting {
@@ -792,8 +793,8 @@ body {
 }
 
 .detail-item.checking {
-    border-left-color: #3498db;
-    background: rgba(52, 152, 219, 0.05);
+    border-left-color: #31b2cc;
+    background: rgba(49, 178, 204, 0.05);
 }
 
 .error-modal {
@@ -896,12 +897,12 @@ body {
 }
 
 .error-btn.primary {
-    background: #3498db;
+    background: #31b2cc;
     color: white;
 }
 
 .error-btn.primary:hover {
-    background: #2980b9;
+    background: #31b2cc;
     transform: translateY(-1px);
 }
 
@@ -992,7 +993,7 @@ body {
 }
 
 .domains-note i {
-    color: #3498db;
+    color: #31b2cc;
 }
 
 /* Animations */
@@ -1069,6 +1070,7 @@ body.modal-active {
 @media (max-width: 768px) {
     .contact-container {
         padding: 20px;
+        margin: 10px auto;
     }
     
     .contact-body {

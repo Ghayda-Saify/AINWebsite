@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AIN Hackathon 2025 - Code the Future</title>
+    <link rel="stylesheet" href="/assets/css/header.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
@@ -18,27 +20,27 @@
         }
         
         .turquoise-primary {
-            color: #64AABA;
+            color: #31b2cc;
         }
         
         .turquoise-bg {
-            background-color: #64AABA;
+            background-color: #31b2cc;
         }
         
         .turquoise-light {
-            color: #7ab8c5;
+            color: #31b2cc;
         }
         
         .turquoise-bg-light {
-            background-color: #7ab8c5;
+            background-color: #31b2cc;
         }
         
         .turquoise-subtle {
-            color: #4a8a9a;
+            color: #31b2cc;
         }
         
         .card-shadow {
-            box-shadow: 0 4px 20px rgba(100, 170, 186, 0.1);
+            box-shadow: 0 4px 20px rgba(49, 178, 204, 0.1);
         }
         
         .hover-lift {
@@ -47,20 +49,20 @@
         
         .hover-lift:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(100, 170, 186, 0.15);
+            box-shadow: 0 8px 30px rgba(49, 178, 204, 0.15);
         }
         
         .gradient-turquoise {
-            background: linear-gradient(135deg, #64AABA, #7ab8c5);
+            background: linear-gradient(135deg, #31b2cc, #31b2cc);
         }
         
         .border-turquoise {
-            border-color: #64AABA;
+            border-color: #31b2cc;
         }
         
         .typing-animation {
             overflow: hidden;
-            border-right: 2px solid #64AABA;
+            border-right: 2px solid #31b2cc;
             white-space: nowrap;
             animation: typing 4s steps(50, end), blink-caret 0.75s step-end infinite;
         }
@@ -72,7 +74,7 @@
         
         @keyframes blink-caret {
             from, to { border-color: transparent; }
-            50% { border-color: #64AABA; }
+            50% { border-color: #31b2cc; }
         }
         
         .fade-in {
@@ -86,11 +88,11 @@
         
         .countdown-box {
             background: linear-gradient(135deg, #f0fdff, #e6fffa);
-            border: 1px solid #64AABA;
+            border: 1px solid #31b2cc;
         }
         
         .feature-icon {
-            background: linear-gradient(135deg, #64AABA, #7ab8c5);
+            background: linear-gradient(135deg, #31b2cc, #31b2cc);
         }
         
         .detail-panel {
@@ -121,6 +123,10 @@
     </style>
 </head>
 <body class="bg-white">
+    <!-- Header -->
+    <header id="site-header"></header>
+    <script src="assets/js/header.js"></script>
+    
     <div class="container mx-auto px-6 py-16">
         <div class="text-center mb-16 fade-in">
             <div class="inline-flex items-center justify-center w-24 h-24 turquoise-bg rounded-3xl mb-8 pulse-glow">
@@ -529,5 +535,9 @@
             setInterval(updateCountdown, 1000);
         });
     </script>
+    
+    <!-- Footer -->
+    <footer id="site-footer"></footer>
+    <script src="assets/js/footer.js"></script>
 </body>
 </html>
