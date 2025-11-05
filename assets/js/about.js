@@ -254,7 +254,9 @@ const setupModal = () => {
         {
             name: 'Mohammad Daraghmeh',
             role: 'Vice President',
-    bio: `Key Responsibilities:
+    bio: `The Vice President plays a vital role in balancing strong leadership with active listening. Working closely with the President, 
+    they support the organization’s vision, ensure continuity in the President’s absence, and contribute to effective decision-making and teamwork that drive the association’s success.
+    Key Responsibilities:
 • Financial & Administrative Oversight
 • Activity Monitoring & Compliance  
 • Branch Strategy Development

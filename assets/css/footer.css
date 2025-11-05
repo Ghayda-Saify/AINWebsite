@@ -1,4 +1,4 @@
-.site-footer { background: #0f172a; color: #e5e7eb; margin-top: auto; }
+.site-footer { background: #121f3c; color: #e5e7eb; margin-top: auto; }
 .site-footer .container { max-width: 1200px; margin: 0 auto; padding: 36px 20px; display: grid; grid-template-columns: 1fr auto auto; gap: 20px; align-items: center; }
 .footer-brand { display: flex; align-items: center; gap: 12px; }
 .footer-brand .logo img { height: 28px; width: auto; display: block; filter: brightness(0) invert(1); }
